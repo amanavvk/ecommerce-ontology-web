@@ -8,7 +8,7 @@ This project is a comprehensive E-Commerce Ontology Web Application built using 
 
 **Deployed on Vercel:** [https://sementicwebcasestudies-n758cm6x5-aman2clouds-projects.vercel.app](https://sementicwebcasestudies-n758cm6x5-aman2clouds-projects.vercel.app)
 
-## 🎯 What We Built
+## 🎯 What I Built
 
 This application demonstrates a complete semantic web solution with:
 
