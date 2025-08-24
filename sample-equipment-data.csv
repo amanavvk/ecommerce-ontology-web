@@ -1,0 +1,6 @@
+equipmentId,equipmentName,type,location,status,efficiency,lastMaintenance
+EQ001,CNC Machine Alpha,CNC_MACHINE,Production Floor A,OPERATIONAL,85.5,2024-08-01
+EQ002,Assembly Robot Beta,ROBOT,Assembly Line 1,MAINTENANCE,0,2024-08-15
+EQ003,Quality Scanner Gamma,SCANNER,Quality Control,OPERATIONAL,92.3,2024-07-20
+EQ004,Injection Molder Delta,MOLDING_MACHINE,Production Floor B,OPERATIONAL,78.2,2024-08-10
+EQ005,Packaging Line Echo,PACKAGING,Packaging Department,OPERATIONAL,88.7,2024-07-25

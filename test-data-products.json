@@ -1,0 +1,38 @@
+[
+  {
+    "productId": "P001",
+    "productName": "Engine Block V8",
+    "category": "Automotive Components",
+    "materialType": "Cast Iron",
+    "weight": 45.5,
+    "dimensions": "500x400x300",
+    "unitPrice": 850.00,
+    "stockLevel": 25,
+    "supplier": "MetalCorp Industries",
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "productId": "P002",
+    "productName": "Brake Assembly Kit",
+    "category": "Safety Components",
+    "materialType": "Steel Alloy",
+    "weight": 8.2,
+    "dimensions": "200x150x100",
+    "unitPrice": 125.50,
+    "stockLevel": 150,
+    "supplier": "Safety First Manufacturing",
+    "lastUpdated": "2024-01-10"
+  },
+  {
+    "productId": "P003",
+    "productName": "Transmission Gear Set",
+    "category": "Drivetrain",
+    "materialType": "Hardened Steel",
+    "weight": 12.8,
+    "dimensions": "300x200x150",
+    "unitPrice": 320.00,
+    "stockLevel": 75,
+    "supplier": "Precision Gears Ltd",
+    "lastUpdated": "2024-01-12"
+  }
+]

@@ -1,0 +1,8 @@
+machineId,machineName,type,location,status,efficiency,manufacturer,installDate
+M001,CNC Machine Alpha,CNC_MILL,Production Floor A,OPERATIONAL,85.5,Haas Automation,2020-01-15
+M002,Assembly Robot Beta,ROBOT,Assembly Line 1,MAINTENANCE,0,Bosch Rexroth,2019-06-20
+M003,Quality Scanner Gamma,SCANNER,Quality Control,OPERATIONAL,92.3,Keyence,2021-03-10
+M004,Injection Molder Delta,MOLDING_MACHINE,Production Floor B,OPERATIONAL,78.2,Engel,2022-02-28
+M005,Packaging Line Echo,PACKAGING,Packaging Department,OPERATIONAL,88.7,Bosch Packaging,2020-12-01
+M006,Welding Robot Foxtrot,WELDING_ROBOT,Production Floor A,OPERATIONAL,91.4,KUKA,2021-08-15
+M007,Laser Cutter Golf,LASER_CUTTER,Fabrication,OPERATIONAL,87.9,Trumpf,2020-07-10

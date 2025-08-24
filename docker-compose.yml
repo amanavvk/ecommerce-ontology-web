@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # MySQL Database for Manufacturing Data
+  mysql:
+    image: mysql:8.0
+    container_name: manufacturing_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: manufacturing
+      MYSQL_USER: r2rml_user
+      MYSQL_PASSWORD: secure_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - manufacturing_network
+
+  # Apache Jena Fuseki Triple Store
+  fuseki:
+    image: stain/jena-fuseki:latest
+    container_name: manufacturing_fuseki
+    environment:
+      ADMIN_PASSWORD: admin123
+    ports:
+      - "3030:3030"
+    volumes:
+      - fuseki_data:/fuseki
+      - ./fuseki/config:/fuseki/configuration
+    networks:
+      - manufacturing_network
+    depends_on:
+      - mysql
+
+  # R2RML Processor Service
+  r2rml_processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.r2rml
+    container_name: r2rml_processor
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: manufacturing
+      DB_USER: r2rml_user
+      DB_PASSWORD: secure_password
+      FUSEKI_URL: http://fuseki:3030/manufacturing
+    volumes:
+      - ./r2rml:/app/mappings
+      - ./output:/app/output
+    networks:
+      - manufacturing_network
+    depends_on:
+      - mysql
+      - fuseki
+
+  # Next.js Web Application
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.webapp
+    container_name: manufacturing_webapp
+    environment:
+      FUSEKI_ENDPOINT: http://fuseki:3030/manufacturing/sparql
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: manufacturing
+      MYSQL_USER: r2rml_user
+      MYSQL_PASSWORD: secure_password
+    ports:
+      - "3000:3000"
+    networks:
+      - manufacturing_network
+    depends_on:
+      - fuseki
+      - r2rml_processor
+
+volumes:
+  mysql_data:
+  fuseki_data:
+
+networks:
+  manufacturing_network:
+    driver: bridge

@@ -1,0 +1,327 @@
+# Enhanced R2RML Mapping for Production-Ready Manufacturing Database Integration
+# Maps relational manufacturing data to RDF using Manufacturing Ontology
+#
+# This mapping transforms:
+# - Machine table -> Manufacturing Machine instances with full metadata
+# - Production table -> Production Run instances with comprehensive metrics
+# - QualityControl table -> Quality Control instances with inspection details
+#
+# Author: Manufacturing Integration Team
+# Version: 2.0 - Production Ready
+# Date: August 2024
+
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix mfg: <http://example.org/manufacturing#> .
+@prefix ex: <http://example.org/manufacturing/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================================
+# Machine Mapping - Enhanced with all production metadata
+# Maps the Machine table to mfg:Machine instances
+# =====================================================================
+
+<#MachineMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Machine" ] ;
+    
+    # Subject: Generate URI for each machine using machine ID
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/machine/{MachineID}" ;
+        rr:class mfg:Machine
+    ] ;
+    
+    # Core Machine Properties
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineID ;
+        rr:objectMap [ rr:column "MachineID" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineType ;
+        rr:objectMap [ rr:column "Type" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:locationName ;
+        rr:objectMap [ rr:column "Location" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:installDate ;
+        rr:objectMap [ 
+            rr:column "InstallDate" ;
+            rr:datatype xsd:date
+        ]
+    ] ;
+    
+    # Enhanced Properties for Production System
+    rr:predicateObjectMap [
+        rr:predicate mfg:status ;
+        rr:objectMap [ rr:column "Status" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:manufacturer ;
+        rr:objectMap [ rr:column "Manufacturer" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:model ;
+        rr:objectMap [ rr:column "Model" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:serialNumber ;
+        rr:objectMap [ rr:column "SerialNumber" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:lastMaintenanceDate ;
+        rr:objectMap [ 
+            rr:column "LastMaintenanceDate" ;
+            rr:datatype xsd:date
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:nextMaintenanceDate ;
+        rr:objectMap [ 
+            rr:column "NextMaintenanceDate" ;
+            rr:datatype xsd:date
+        ]
+    ] .
+
+# =====================================================================
+# Production Run Mapping - Enhanced with comprehensive metrics
+# Maps the Production table to mfg:ProductionRun instances
+# =====================================================================
+
+<#ProductionMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Production" ] ;
+    
+    # Subject: Generate URI for each production run
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Core Production Properties
+    rr:predicateObjectMap [
+        rr:predicate mfg:productionID ;
+        rr:objectMap [ rr:column "ProductionID" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:timestamp ;
+        rr:objectMap [ 
+            rr:column "Timestamp" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:outputQuantity ;
+        rr:objectMap [ 
+            rr:column "Output_Quantity" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityScore ;
+        rr:objectMap [ 
+            rr:column "Quality_Score" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    
+    # Enhanced Production Metrics
+    rr:predicateObjectMap [
+        rr:predicate mfg:productType ;
+        rr:objectMap [ rr:column "ProductType" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:batchNumber ;
+        rr:objectMap [ rr:column "BatchNumber" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:operatorID ;
+        rr:objectMap [ rr:column "OperatorID" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:shiftNumber ;
+        rr:objectMap [ 
+            rr:column "ShiftNumber" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:temperature ;
+        rr:objectMap [ 
+            rr:column "Temperature" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:humidity ;
+        rr:objectMap [ 
+            rr:column "Humidity" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:processingTime ;
+        rr:objectMap [ 
+            rr:column "ProcessingTime" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:energyConsumption ;
+        rr:objectMap [ 
+            rr:column "EnergyConsumption" ;
+            rr:datatype xsd:decimal
+        ]
+    ] ;
+    
+    # Relationship: Production produced by Machine
+    rr:predicateObjectMap [
+        rr:predicate mfg:producedBy ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/machine/{MachineID}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# =====================================================================
+# Quality Control Mapping - New comprehensive quality tracking
+# Maps the QualityControl table to mfg:QualityInspection instances
+# =====================================================================
+
+<#QualityControlMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "QualityControl" ] ;
+    
+    # Subject: Generate URI for each quality inspection
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/quality/{QualityID}" ;
+        rr:class mfg:QualityInspection
+    ] ;
+    
+    # Quality Control Properties
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityID ;
+        rr:objectMap [ rr:column "QualityID" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:inspectorID ;
+        rr:objectMap [ rr:column "InspectorID" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:inspectionDate ;
+        rr:objectMap [ 
+            rr:column "InspectionDate" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:defectCount ;
+        rr:objectMap [ 
+            rr:column "DefectCount" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:defectType ;
+        rr:objectMap [ rr:column "DefectType" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:inspectionResult ;
+        rr:objectMap [ rr:column "InspectionResult" ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:inspectionNotes ;
+        rr:objectMap [ rr:column "Notes" ]
+    ] ;
+    
+    # Relationship: Quality inspection for Production Run
+    rr:predicateObjectMap [
+        rr:predicate mfg:inspectedProduction ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+# =====================================================================
+# Quality Classification Rules - Conditional Mappings
+# Creates quality category instances based on score ranges
+# =====================================================================
+
+<#HighQualityMap> a rr:TriplesMap ;
+    rr:logicalTable [ 
+        rr:sqlQuery """
+            SELECT ProductionID, Quality_Score, 'High' as QualityCategory
+            FROM Production 
+            WHERE Quality_Score >= 95.0
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityCategory ;
+        rr:objectMap [ rr:constant "High Quality" ]
+    ] .
+
+<#MediumQualityMap> a rr:TriplesMap ;
+    rr:logicalTable [ 
+        rr:sqlQuery """
+            SELECT ProductionID, Quality_Score, 'Medium' as QualityCategory
+            FROM Production 
+            WHERE Quality_Score >= 80.0 AND Quality_Score < 95.0
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityCategory ;
+        rr:objectMap [ rr:constant "Medium Quality" ]
+    ] .
+
+<#LowQualityMap> a rr:TriplesMap ;
+    rr:logicalTable [ 
+        rr:sqlQuery """
+            SELECT ProductionID, Quality_Score, 'Low' as QualityCategory
+            FROM Production 
+            WHERE Quality_Score < 80.0
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityCategory ;
+        rr:objectMap [ rr:constant "Low Quality" ]
+    ] .

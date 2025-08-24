@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:ec="http://www.example.org/ecommerce#">
+
+  <owl:Ontology rdf:about="http://www.example.org/ecommerce#orders"/>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="http://www.example.org/ecommerce#Order"/>
+  <owl:Class rdf:about="http://www.example.org/ecommerce#Product"/>
+  <owl:Class rdf:about="http://www.example.org/ecommerce#User"/>
+
+  <!-- Order Properties -->
+  <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#orderDate">
+    <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#placedBy">
+    <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+    <rdfs:range rdf:resource="http://www.example.org/ecommerce#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#containsProduct">
+    <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+    <rdfs:range rdf:resource="http://www.example.org/ecommerce#Product"/>
+  </owl:ObjectProperty>
+
+</rdf:RDF>

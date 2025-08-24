@@ -1,0 +1,264 @@
+@prefix rr: &lt;http://www.w3.org/ns/r2rml#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix ex: &lt;http://example.org/manufacturing/data/&gt; .
+@prefix mfg: &lt;http://example.org/manufacturing#&gt; .
+
+#################################################################
+#    Machine Table Mapping
+#################################################################
+
+&lt;#MachineMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:tableName "Machine"
+    ] ;
+    
+    # Subject: Create unique URI for each machine
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/machine/{MachineID}" ;
+        rr:class mfg:Machine
+    ] ;
+    
+    # Predicate-Object Maps
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineID ;
+        rr:objectMap [
+            rr:column "MachineID" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineType ;
+        rr:objectMap [
+            rr:column "Type" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:installDate ;
+        rr:objectMap [
+            rr:column "InstallDate" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    
+    # Location as object property (referencing Location individuals)
+    rr:predicateObjectMap [
+        rr:predicate mfg:locatedAt ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/location/{Location}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    
+    # Also include location as data property for direct access
+    rr:predicateObjectMap [
+        rr:predicate mfg:locationName ;
+        rr:objectMap [
+            rr:column "Location" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+#################################################################
+#    Production Table Mapping
+#################################################################
+
+&lt;#ProductionMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:tableName "Production"
+    ] ;
+    
+    # Subject: Create unique URI for each production run
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Predicate-Object Maps
+    rr:predicateObjectMap [
+        rr:predicate mfg:productionID ;
+        rr:objectMap [
+            rr:column "ProductionID" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:outputQuantity ;
+        rr:objectMap [
+            rr:column "Output_Quantity" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate mfg:timestamp ;
+        rr:objectMap [
+            rr:column "Timestamp" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    
+    # Link to machine that produced this run
+    rr:predicateObjectMap [
+        rr:predicate mfg:producedBy ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/machine/{MachineID}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    
+    # Link to quality measurement
+    rr:predicateObjectMap [
+        rr:predicate mfg:hasQualityMeasurement ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/quality/{ProductionID}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+#################################################################
+#    Quality Measurement Mapping (derived from Production table)
+#################################################################
+
+&lt;#QualityMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:tableName "Production"
+    ] ;
+    
+    # Subject: Create unique URI for each quality measurement
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/quality/{ProductionID}" ;
+        rr:class mfg:QualityMeasurement
+    ] ;
+    
+    # Quality score from Production table
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityScore ;
+        rr:objectMap [
+            rr:column "Quality_Score" ;
+            rr:datatype xsd:decimal
+        ]
+    ] .
+
+#################################################################
+#    Location Mapping (derived from Machine table)
+#################################################################
+
+&lt;#LocationMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:sqlQuery """
+            SELECT DISTINCT Location
+            FROM Machine
+            WHERE Location IS NOT NULL
+        """
+    ] ;
+    
+    # Subject: Create unique URI for each location
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/location/{Location}" ;
+        rr:class mfg:Location
+    ] ;
+    
+    # Location name
+    rr:predicateObjectMap [
+        rr:predicate mfg:locationName ;
+        rr:objectMap [
+            rr:column "Location" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+#################################################################
+#    Advanced Mappings with Joins
+#################################################################
+
+# Alternative Production mapping with JOIN for enhanced data
+&lt;#ProductionWithMachineDetailsMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:sqlQuery """
+            SELECT p.ProductionID, p.MachineID, p.Timestamp, 
+                   p.Output_Quantity, p.Quality_Score,
+                   m.Type as MachineType, m.Location as MachineLocation
+            FROM Production p
+            JOIN Machine m ON p.MachineID = m.MachineID
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Additional derived properties
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:template "Production Run {ProductionID} on {MachineType} at {MachineLocation}" ;
+            rr:datatype xsd:string
+        ]
+    ] ;
+    
+    rr:predicateObjectMap [
+        rr:predicate rdfs:comment ;
+        rr:objectMap [
+            rr:template "Production run {ProductionID} produced {Output_Quantity} units with quality score {Quality_Score}" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+#################################################################
+#    Conditional Mappings
+#################################################################
+
+# High Quality Production Runs (Quality Score >= 90)
+&lt;#HighQualityProductionMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:sqlQuery """
+            SELECT ProductionID, MachineID, Timestamp, Output_Quantity, Quality_Score
+            FROM Production
+            WHERE Quality_Score >= 90
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Add a high quality indicator
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityCategory ;
+        rr:objectMap [
+            rr:constant "High Quality" ;
+            rr:datatype xsd:string
+        ]
+    ] .
+
+# Low Quality Production Runs (Quality Score < 70)
+&lt;#LowQualityProductionMapping&gt; a rr:TriplesMap ;
+    rr:logicalTable [
+        rr:sqlQuery """
+            SELECT ProductionID, MachineID, Timestamp, Output_Quantity, Quality_Score
+            FROM Production
+            WHERE Quality_Score < 70
+        """
+    ] ;
+    
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Add a low quality indicator
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityCategory ;
+        rr:objectMap [
+            rr:constant "Needs Improvement" ;
+            rr:datatype xsd:string
+        ]
+    ] .

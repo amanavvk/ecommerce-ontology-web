@@ -1,0 +1,11 @@
+PREFIX ex: <http://example.org/ecommerce#>
+
+SELECT ?user ?name ?email ?purchaseCount
+WHERE {
+  ?user a ex:User ;
+        ex:userName ?name ;
+        ex:userEmail ?email ;
+        ex:hasPurchased ?purchase .
+  ?purchase ex:purchaseCount ?purchaseCount .
+}
+ORDER BY DESC(?purchaseCount)

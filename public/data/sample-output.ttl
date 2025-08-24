@@ -1,0 +1,301 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mfg: <http://example.org/manufacturing#> .
+@prefix ex: <http://example.org/> .
+
+# Sample RDF Output Generated from R2RML Mappings
+# This shows the expected RDF triples produced by applying the R2RML mappings
+# to the sample manufacturing database
+
+# =====================================================
+# Machine Entities
+# =====================================================
+
+ex:machine/M001 rdf:type mfg:Machine ;
+    mfg:machineID "M001"^^xsd:string ;
+    mfg:machineType "CNC Milling Machine"^^xsd:string ;
+    mfg:locationName "Building A - Line 1"^^xsd:string ;
+    mfg:installDate "2020-01-15"^^xsd:date ;
+    mfg:manufacturer "Haas Automation"^^xsd:string ;
+    mfg:serialNumber "VM-2"^^xsd:string ;
+    mfg:status "Active"^^xsd:string ;
+    rdfs:label "Machine M001 (CNC Milling Machine)"^^xsd:string ;
+    mfg:hasProduction ex:production/1001, ex:production/1002, ex:production/1003, ex:production/1004 .
+
+ex:machine/M002 rdf:type mfg:Machine ;
+    mfg:machineID "M002"^^xsd:string ;
+    mfg:machineType "Injection Molding Machine"^^xsd:string ;
+    mfg:locationName "Building A - Line 2"^^xsd:string ;
+    mfg:installDate "2019-06-20"^^xsd:date ;
+    mfg:manufacturer "Engel"^^xsd:string ;
+    mfg:serialNumber "EM-450"^^xsd:string ;
+    mfg:status "Active"^^xsd:string ;
+    rdfs:label "Machine M002 (Injection Molding Machine)"^^xsd:string ;
+    mfg:hasProduction ex:production/1005, ex:production/1006, ex:production/1007, ex:production/1008 .
+
+ex:machine/M003 rdf:type mfg:Machine ;
+    mfg:machineID "M003"^^xsd:string ;
+    mfg:machineType "Laser Cutting Machine"^^xsd:string ;
+    mfg:locationName "Building B - Line 1"^^xsd:string ;
+    mfg:installDate "2021-03-10"^^xsd:date ;
+    mfg:manufacturer "Trumpf"^^xsd:string ;
+    mfg:serialNumber "TL-3030"^^xsd:string ;
+    mfg:status "Active"^^xsd:string ;
+    rdfs:label "Machine M003 (Laser Cutting Machine)"^^xsd:string ;
+    mfg:hasProduction ex:production/1009, ex:production/1010, ex:production/1011 .
+
+ex:machine/M004 rdf:type mfg:Machine ;
+    mfg:machineID "M004"^^xsd:string ;
+    mfg:machineType "Assembly Robot"^^xsd:string ;
+    mfg:locationName "Building A - Assembly"^^xsd:string ;
+    mfg:installDate "2020-11-05"^^xsd:date ;
+    mfg:manufacturer "ABB"^^xsd:string ;
+    mfg:serialNumber "IRB-1600"^^xsd:string ;
+    mfg:status "Active"^^xsd:string ;
+    rdfs:label "Machine M004 (Assembly Robot)"^^xsd:string ;
+    mfg:hasProduction ex:production/1012, ex:production/1013, ex:production/1014 .
+
+ex:machine/M005 rdf:type mfg:Machine ;
+    mfg:machineID "M005"^^xsd:string ;
+    mfg:machineType "Quality Inspection Station"^^xsd:string ;
+    mfg:locationName "Quality Lab"^^xsd:string ;
+    mfg:installDate "2018-08-12"^^xsd:date ;
+    mfg:manufacturer "Zeiss"^^xsd:string ;
+    mfg:serialNumber "CMM-850"^^xsd:string ;
+    mfg:status "Active"^^xsd:string ;
+    rdfs:label "Machine M005 (Quality Inspection Station)"^^xsd:string ;
+    mfg:hasProduction ex:production/1015, ex:production/1016 .
+
+# =====================================================
+# Production Run Entities
+# =====================================================
+
+ex:production/1001 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1001"^^xsd:string ;
+    mfg:timestamp "2025-08-20T08:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-20T08:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-20T16:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 125^^xsd:integer ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:hasQualityMeasurement ex:quality/1001 ;
+    rdfs:label "Production Run 1001 on 2025-08-20T08:00:00"^^xsd:string .
+
+ex:production/1002 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1002"^^xsd:string ;
+    mfg:timestamp "2025-08-21T08:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-21T08:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-21T16:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 130^^xsd:integer ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:hasQualityMeasurement ex:quality/1002 ;
+    rdfs:label "Production Run 1002 on 2025-08-21T08:00:00"^^xsd:string .
+
+ex:production/1005 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1005"^^xsd:string ;
+    mfg:timestamp "2025-08-20T06:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-20T06:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-20T14:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 2400^^xsd:integer ;
+    mfg:producedBy ex:machine/M002 ;
+    mfg:hasQualityMeasurement ex:quality/1005 ;
+    rdfs:label "Production Run 1005 on 2025-08-20T06:00:00"^^xsd:string .
+
+ex:production/1009 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1009"^^xsd:string ;
+    mfg:timestamp "2025-08-20T09:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-20T09:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-20T17:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 85^^xsd:integer ;
+    mfg:producedBy ex:machine/M003 ;
+    mfg:hasQualityMeasurement ex:quality/1009 ;
+    rdfs:label "Production Run 1009 on 2025-08-20T09:00:00"^^xsd:string .
+
+ex:production/1012 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1012"^^xsd:string ;
+    mfg:timestamp "2025-08-20T07:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-20T07:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-20T15:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 200^^xsd:integer ;
+    mfg:producedBy ex:machine/M004 ;
+    mfg:hasQualityMeasurement ex:quality/1012 ;
+    rdfs:label "Production Run 1012 on 2025-08-20T07:00:00"^^xsd:string .
+
+# Special case: Production run without quality score (conveyor system)
+ex:production/1017 rdf:type mfg:ProductionRun ;
+    mfg:productionID "1017"^^xsd:string ;
+    mfg:timestamp "2025-08-20T06:00:00"^^xsd:dateTime ;
+    mfg:startTime "2025-08-20T06:00:00"^^xsd:dateTime ;
+    mfg:endTime "2025-08-20T23:59:00"^^xsd:dateTime ;
+    mfg:outputQuantity 5000^^xsd:integer ;
+    mfg:producedBy ex:machine/M007 ;
+    rdfs:label "Production Run 1017 on 2025-08-20T06:00:00"^^xsd:string .
+    # Note: No quality measurement for transport-only operations
+
+# =====================================================
+# Quality Measurement Entities
+# =====================================================
+
+ex:quality/1001 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 94.5^^xsd:decimal ;
+    mfg:inspectionDate "2025-08-20T08:00:00"^^xsd:dateTime ;
+    rdfs:label "Quality Measurement for Production 1001 (Score: 94.5)"^^xsd:string .
+
+ex:quality/1002 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 96.2^^xsd:decimal ;
+    mfg:inspectionDate "2025-08-21T08:00:00"^^xsd:dateTime ;
+    rdfs:label "Quality Measurement for Production 1002 (Score: 96.2)"^^xsd:string .
+
+ex:quality/1005 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 92.3^^xsd:decimal ;
+    mfg:inspectionDate "2025-08-20T06:00:00"^^xsd:dateTime ;
+    rdfs:label "Quality Measurement for Production 1005 (Score: 92.3)"^^xsd:string .
+
+ex:quality/1009 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 98.2^^xsd:decimal ;
+    mfg:inspectionDate "2025-08-20T09:00:00"^^xsd:dateTime ;
+    rdfs:label "Quality Measurement for Production 1009 (Score: 98.2)"^^xsd:string .
+
+ex:quality/1012 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 99.1^^xsd:decimal ;
+    mfg:inspectionDate "2025-08-20T07:00:00"^^xsd:dateTime ;
+    rdfs:label "Quality Measurement for Production 1012 (Score: 99.1)"^^xsd:string .
+
+# =====================================================
+# Extended Entities (Employees, Maintenance, etc.)
+# =====================================================
+
+ex:employee/OP001 rdf:type mfg:Employee ;
+    mfg:employeeID "OP001"^^xsd:string ;
+    mfg:firstName "John"^^xsd:string ;
+    mfg:lastName "Smith"^^xsd:string ;
+    rdfs:label "John Smith (OP001)"^^xsd:string .
+
+ex:employee/OP003 rdf:type mfg:Employee ;
+    mfg:employeeID "OP003"^^xsd:string ;
+    mfg:firstName "Mike"^^xsd:string ;
+    mfg:lastName "Wilson"^^xsd:string ;
+    rdfs:label "Mike Wilson (OP003)"^^xsd:string .
+
+ex:maintenance/2001 rdf:type mfg:MaintenanceRecord ;
+    mfg:maintenanceDate "2025-08-15T18:00:00"^^xsd:dateTime ;
+    mfg:maintenanceType "Preventive"^^xsd:string ;
+    mfg:description "Regular calibration and lubrication"^^xsd:string ;
+    mfg:duration 2.5^^xsd:decimal ;
+    mfg:cost 250.00^^xsd:decimal ;
+    rdfs:label "Maintenance 2001 on 2025-08-15"^^xsd:string .
+
+# Machine to maintenance relationship
+ex:machine/M001 mfg:hasMaintenance ex:maintenance/2001 .
+
+# =====================================================
+# Aggregate Data (Calculated via SQL)
+# =====================================================
+
+# Machine efficiency calculated from average quality scores
+ex:machine/M001 mfg:efficiency 95.9^^xsd:decimal ;  # Average of 94.5, 96.2, 95.8, 97.1
+    ex:totalProductions 4^^xsd:integer ;
+    ex:totalOutput 515^^xsd:integer .  # 125+130+128+132
+
+ex:machine/M002 mfg:efficiency 93.5^^xsd:decimal ;  # Average of quality scores
+    ex:totalProductions 4^^xsd:integer ;
+    ex:totalOutput 9730^^xsd:integer .
+
+ex:machine/M003 mfg:efficiency 98.2^^xsd:decimal ;  # Highest quality laser cutting
+    ex:totalProductions 3^^xsd:integer ;
+    ex:totalOutput 255^^xsd:integer .
+
+ex:machine/M004 mfg:efficiency 99.1^^xsd:decimal ;  # Highest overall - assembly robot
+    ex:totalProductions 3^^xsd:integer ;
+    ex:totalOutput 600^^xsd:integer .
+
+# =====================================================
+# Specialized Machine Classes (Conditional Mappings)
+# =====================================================
+
+# CNC machines get additional classification
+ex:machine/M001 rdf:type mfg:CNCMachine .
+
+# Assembly robots get additional classification  
+ex:machine/M004 rdf:type mfg:AssemblyRobot .
+
+# =====================================================
+# IoT Integration Points
+# =====================================================
+
+# These would be generated from real-time IoT sensor data
+ex:sensor/M001_temp_20250824_120000 rdf:type mfg:SensorReading ;
+    mfg:sensorType "Temperature"^^xsd:string ;
+    mfg:value 45.2^^xsd:decimal ;
+    mfg:unit "Celsius"^^xsd:string ;
+    mfg:timestamp "2025-08-24T12:00:00"^^xsd:dateTime ;
+    mfg:attachedTo ex:machine/M001 .
+
+ex:sensor/M002_pressure_20250824_120000 rdf:type mfg:SensorReading ;
+    mfg:sensorType "Pressure"^^xsd:string ;
+    mfg:value 850.5^^xsd:decimal ;
+    mfg:unit "PSI"^^xsd:string ;
+    mfg:timestamp "2025-08-24T12:00:00"^^xsd:dateTime ;
+    mfg:attachedTo ex:machine/M002 .
+
+# =====================================================
+# Sample SPARQL Queries on Generated RDF
+# =====================================================
+
+# Query 1: Find all machines with efficiency > 95%
+# SELECT ?machine ?type ?efficiency WHERE {
+#     ?machine rdf:type mfg:Machine ;
+#              mfg:machineType ?type ;
+#              mfg:efficiency ?efficiency .
+#     FILTER(?efficiency > 95.0)
+# }
+
+# Query 2: Find production runs with quality score > 98%
+# SELECT ?production ?machine ?quality WHERE {
+#     ?production rdf:type mfg:ProductionRun ;
+#                 mfg:producedBy ?machine ;
+#                 mfg:hasQualityMeasurement ?qm .
+#     ?qm mfg:qualityScore ?quality .
+#     FILTER(?quality > 98.0)
+# }
+
+# Query 3: Find all machines that need maintenance (fictional logic)
+# SELECT ?machine ?type ?lastMaintenance WHERE {
+#     ?machine rdf:type mfg:Machine ;
+#              mfg:machineType ?type ;
+#              mfg:hasMaintenance ?maintenance .
+#     ?maintenance mfg:maintenanceDate ?lastMaintenance .
+#     FILTER(?lastMaintenance < "2025-08-20T00:00:00"^^xsd:dateTime)
+# }
+
+# Query 4: Calculate total output by machine type
+# SELECT ?machineType (SUM(?output) as ?totalOutput) WHERE {
+#     ?machine rdf:type mfg:Machine ;
+#              mfg:machineType ?machineType ;
+#              mfg:hasProduction ?production .
+#     ?production mfg:outputQuantity ?output .
+# } GROUP BY ?machineType
+
+# =====================================================
+# Comments on R2RML Integration Success
+# =====================================================
+
+# This RDF output demonstrates successful R2RML mapping with:
+# 1. ENTITY MAPPING: Database tables → RDF classes
+# 2. PROPERTY MAPPING: Database columns → RDF properties  
+# 3. RELATIONSHIP MAPPING: Foreign keys → Object properties
+# 4. DATA TYPE CONVERSION: SQL types → XSD types
+# 5. URI GENERATION: Consistent URI patterns
+# 6. LABEL GENERATION: Human-readable labels
+# 7. AGGREGATE CALCULATIONS: Derived metrics
+# 8. CONDITIONAL LOGIC: Type-based specialization
+# 9. NULL HANDLING: Graceful handling of missing quality scores
+# 10. EXTENSIBILITY: Ready for IoT sensor integration
+
+# The generated RDF enables:
+# - Semantic queries with SPARQL
+# - Cross-system data integration
+# - Automated reasoning and inference
+# - Real-time analytics and monitoring
+# - Historical trend analysis
+# - Predictive maintenance insights

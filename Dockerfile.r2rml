@@ -1,0 +1,39 @@
+# R2RML Processor Dockerfile
+FROM openjdk:11-jre-slim
+
+# Install required packages
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    bash \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up Apache Jena
+ENV JENA_VERSION=4.9.0
+ENV JENA_HOME=/opt/jena
+RUN wget -q "https://archive.apache.org/dist/jena/binaries/apache-jena-${JENA_VERSION}.tar.gz" \
+    && tar -xzf "apache-jena-${JENA_VERSION}.tar.gz" \
+    && mv "apache-jena-${JENA_VERSION}" "$JENA_HOME" \
+    && rm "apache-jena-${JENA_VERSION}.tar.gz"
+
+# Download MySQL Connector
+RUN wget -q "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.33.jar" \
+    && mv mysql-connector-java-8.0.33.jar "$JENA_HOME/lib/"
+
+# Set up working directory
+WORKDIR /app
+
+# Copy R2RML mappings and scripts
+COPY r2rml/ ./mappings/
+COPY scripts/r2rml-processor.sh ./
+COPY scripts/wait-for-it.sh ./
+
+# Make scripts executable
+RUN chmod +x *.sh
+
+# Set environment variables
+ENV PATH="$JENA_HOME/bin:$PATH"
+ENV CLASSPATH="$JENA_HOME/lib/*"
+
+# Default command
+CMD ["./r2rml-processor.sh"]

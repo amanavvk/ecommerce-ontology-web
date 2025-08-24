@@ -1,0 +1,10 @@
+PREFIX ex: <http://example.org/ecommerce#>
+
+SELECT ?product ?name ?price
+WHERE {
+  ?product a ex:Product ;
+           ex:productName ?name ;
+           ex:productPrice ?price .
+  FILTER(?price < 100)  # Example filter for products under $100
+}
+ORDER BY ?price

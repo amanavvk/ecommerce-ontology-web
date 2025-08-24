@@ -1,0 +1,43 @@
+@prefix ex: <http://example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Sample Orders Data
+
+ex:Order1 a ex:Order ;
+    ex:orderID "ORD001"^^xsd:string ;
+    ex:customer ex:User1 ;
+    ex:orderDate "2023-10-01T10:00:00"^^xsd:dateTime ;
+    ex:totalAmount "99.99"^^xsd:decimal ;
+    ex:containsProduct ex:Product1, ex:Product2 .
+
+ex:Order2 a ex:Order ;
+    ex:orderID "ORD002"^^xsd:string ;
+    ex:customer ex:User2 ;
+    ex:orderDate "2023-10-02T11:30:00"^^xsd:dateTime ;
+    ex:totalAmount "49.50"^^xsd:decimal ;
+    ex:containsProduct ex:Product3 .
+
+ex:User1 a ex:User ;
+    ex:userID "USER001"^^xsd:string ;
+    ex:userName "John Doe"^^xsd:string ;
+    ex:userEmail "john.doe@example.com"^^xsd:string .
+
+ex:User2 a ex:User ;
+    ex:userID "USER002"^^xsd:string ;
+    ex:userName "Jane Smith"^^xsd:string ;
+    ex:userEmail "jane.smith@example.com"^^xsd:string .
+
+ex:Product1 a ex:Product ;
+    ex:productID "PROD001"^^xsd:string ;
+    ex:productName "Product A"^^xsd:string ;
+    ex:productPrice "49.99"^^xsd:decimal .
+
+ex:Product2 a ex:Product ;
+    ex:productID "PROD002"^^xsd:string ;
+    ex:productName "Product B"^^xsd:string ;
+    ex:productPrice "50.00"^^xsd:decimal .
+
+ex:Product3 a ex:Product ;
+    ex:productID "PROD003"^^xsd:string ;
+    ex:productName "Product C"^^xsd:string ;
+    ex:productPrice "49.50"^^xsd:decimal .

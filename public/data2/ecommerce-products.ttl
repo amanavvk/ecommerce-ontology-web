@@ -1,0 +1,103 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ec:prod1 a ec:Product ; ec:productName "Samsung 65-inch 4K Smart TV" ; ec:productPrice 1144.63 ; ec:inventoryCount 4 ; ec:belongsToCategory ec:cat10 .
+ec:prod2 a ec:Product ; ec:productName "Apple MacBook Pro 16-inch" ; ec:productPrice 691.82 ; ec:inventoryCount 84 ; ec:belongsToCategory ec:cat4 .
+ec:prod3 a ec:Product ; ec:productName "Nike Air Max 270 Running Shoes" ; ec:productPrice 832.63 ; ec:inventoryCount 47 ; ec:belongsToCategory ec:cat20 .
+ec:prod4 a ec:Product ; ec:productName "iPhone 15 Pro Max 256GB" ; ec:productPrice 1394.2 ; ec:inventoryCount 20 ; ec:belongsToCategory ec:cat11 .
+ec:prod5 a ec:Product ; ec:productName "Sony WH-1000XM5 Headphones" ; ec:productPrice 484.78 ; ec:inventoryCount 87 ; ec:belongsToCategory ec:cat16 .
+ec:prod6 a ec:Product ; ec:productName "Dell XPS 13 Laptop" ; ec:productPrice 1269.55 ; ec:inventoryCount 58 ; ec:belongsToCategory ec:cat15 .
+ec:prod7 a ec:Product ; ec:productName "Amazon Echo Dot (5th Gen)" ; ec:productPrice 695.25 ; ec:inventoryCount 72 ; ec:belongsToCategory ec:cat2 .
+ec:prod8 a ec:Product ; ec:productName "PlayStation 5 Console" ; ec:productPrice 1765.92 ; ec:inventoryCount 25 ; ec:belongsToCategory ec:cat12 .
+ec:prod9 a ec:Product ; ec:productName "Adidas Ultraboost 22 Sneakers" ; ec:productPrice 911.78 ; ec:inventoryCount 52 ; ec:belongsToCategory ec:cat9 .
+ec:prod10 a ec:Product ; ec:productName "LG OLED55C3PUA 55-inch TV" ; ec:productPrice 1285.61 ; ec:inventoryCount 46 ; ec:belongsToCategory ec:cat10 .
+ec:prod11 a ec:Product ; ec:productName "Instant Pot Duo 7-in-1 Pressure Cooker" ; ec:productPrice 747.82 ; ec:inventoryCount 53 ; ec:belongsToCategory ec:cat6 .
+ec:prod12 a ec:Product ; ec:productName "Dyson V15 Detect Cordless Vacuum" ; ec:productPrice 656.62 ; ec:inventoryCount 13 ; ec:belongsToCategory ec:cat1 .
+ec:prod13 a ec:Product ; ec:productName "iPad Pro 12.9-inch (6th Gen)" ; ec:productPrice 864.04 ; ec:inventoryCount 1 ; ec:belongsToCategory ec:cat11 .
+ec:prod14 a ec:Product ; ec:productName "The North Face Denali Fleece Jacket" ; ec:productPrice 1230.95 ; ec:inventoryCount 37 ; ec:belongsToCategory ec:cat18 .
+ec:prod15 a ec:Product ; ec:productName "Under Armour HOVR Phantom 3" ; ec:productPrice 698.15 ; ec:inventoryCount 15 ; ec:belongsToCategory ec:cat9 .
+ec:prod16 a ec:Product ; ec:productName "KitchenAid Artisan Stand Mixer" ; ec:productPrice 1571.2 ; ec:inventoryCount 30 ; ec:belongsToCategory ec:cat1 .
+ec:prod17 a ec:Product ; ec:productName "HP Spectre x360 2-in-1 Laptop" ; ec:productPrice 1424.39 ; ec:inventoryCount 24 ; ec:belongsToCategory ec:cat4 .
+ec:prod18 a ec:Product ; ec:productName "Samsung QN85B 75-inch Neo QLED TV" ; ec:productPrice 959.77 ; ec:inventoryCount 3 ; ec:belongsToCategory ec:cat10 .
+ec:prod19 a ec:Product ; ec:productName "Patagonia Better Sweater Jacket" ; ec:productPrice 1764.11 ; ec:inventoryCount 54 ; ec:belongsToCategory ec:cat18 .
+ec:prod20 a ec:Product ; ec:productName "Bissell CrossWave Pet Pro Cleaner" ; ec:productPrice 414.39 ; ec:inventoryCount 19 ; ec:belongsToCategory ec:cat13 .
+ec:prod21 a ec:Product ; ec:productName "Bose QuietComfort 45 Headphones" ; ec:productPrice 503.2 ; ec:inventoryCount 64 ; ec:belongsToCategory ec:cat1 .
+ec:prod22 a ec:Product ; ec:productName "New Balance Fresh Foam X 1080v12" ; ec:productPrice 1668.23 ; ec:inventoryCount 90 ; ec:belongsToCategory ec:cat9 .
+ec:prod23 a ec:Product ; ec:productName "Ninja Foodi Personal Blender" ; ec:productPrice 788.77 ; ec:inventoryCount 99 ; ec:belongsToCategory ec:cat8 .
+ec:prod24 a ec:Product ; ec:productName "Samsung Galaxy S24 Ultra" ; ec:productPrice 1372.5 ; ec:inventoryCount 15 ; ec:belongsToCategory ec:cat11 .
+ec:prod25 a ec:Product ; ec:productName "JBL Charge 5 Portable Speaker" ; ec:productPrice 434.49 ; ec:inventoryCount 47 ; ec:belongsToCategory ec:cat16 .
+ec:prod26 a ec:Product ; ec:productName "Shark Navigator Lift-Away Vacuum" ; ec:productPrice 845.91 ; ec:inventoryCount 41 ; ec:belongsToCategory ec:cat13 .
+ec:prod27 a ec:Product ; ec:productName "Google Nest Hub Max Display" ; ec:productPrice 725.93 ; ec:inventoryCount 23 ; ec:belongsToCategory ec:cat2 .
+ec:prod28 a ec:Product ; ec:productName "Columbia Flash Forward Windbreaker" ; ec:productPrice 1213.53 ; ec:inventoryCount 7 ; ec:belongsToCategory ec:cat17 .
+ec:prod29 a ec:Product ; ec:productName "Levi's 511 Slim Fit Jeans" ; ec:productPrice 702.21 ; ec:inventoryCount 28 ; ec:belongsToCategory ec:cat17 .
+ec:prod30 a ec:Product ; ec:productName "Reebok Nano X3 Training Shoes" ; ec:productPrice 886.67 ; ec:inventoryCount 59 ; ec:belongsToCategory ec:cat5 .
+ec:prod31 a ec:Product ; ec:productName "Anker PowerCore 10000 Power Bank" ; ec:productPrice 129.5 ; ec:inventoryCount 85 ; ec:belongsToCategory ec:cat3 .
+ec:prod32 a ec:Product ; ec:productName "Microsoft Surface Laptop Studio" ; ec:productPrice 1690.17 ; ec:inventoryCount 9 ; ec:belongsToCategory ec:cat4 .
+ec:prod33 a ec:Product ; ec:productName "Ring Video Doorbell Pro 2" ; ec:productPrice 748.47 ; ec:inventoryCount 51 ; ec:belongsToCategory ec:cat2 .
+ec:prod34 a ec:Product ; ec:productName "Logitech MX Master 3S Mouse" ; ec:productPrice 420.51 ; ec:inventoryCount 33 ; ec:belongsToCategory ec:cat15 .
+ec:prod35 a ec:Product ; ec:productName "ASUS ROG Strix Gaming Laptop" ; ec:productPrice 1231.42 ; ec:inventoryCount 51 ; ec:belongsToCategory ec:cat14 .
+ec:prod36 a ec:Product ; ec:productName "Champion Powerblend Fleece Hoodie" ; ec:productPrice 62.23 ; ec:inventoryCount 13 ; ec:belongsToCategory ec:cat7 .
+ec:prod37 a ec:Product ; ec:productName "Breville Barista Express Espresso Machine" ; ec:productPrice 122.07 ; ec:inventoryCount 60 ; ec:belongsToCategory ec:cat6 .
+ec:prod38 a ec:Product ; ec:productName "Lenovo ThinkPad X1 Carbon" ; ec:productPrice 1002.42 ; ec:inventoryCount 55 ; ec:belongsToCategory ec:cat4 .
+ec:prod39 a ec:Product ; ec:productName "Acer Predator Helios 300 Gaming Laptop" ; ec:productPrice 483.24 ; ec:inventoryCount 21 ; ec:belongsToCategory ec:cat4 .
+ec:prod40 a ec:Product ; ec:productName "Ultimate Ears BOOM 3 Speaker" ; ec:productPrice 418.32 ; ec:inventoryCount 78 ; ec:belongsToCategory ec:cat16 .
+ec:prod41 a ec:Product ; ec:productName "Adidas Ultraboost 22 Running Shoes" ; ec:productPrice 1149.57 ; ec:inventoryCount 77 ; ec:belongsToCategory ec:cat5 .
+ec:prod42 a ec:Product ; ec:productName "KitchenAid Stand Mixer Classic" ; ec:productPrice 961.1 ; ec:inventoryCount 22 ; ec:belongsToCategory ec:cat8 .
+ec:prod43 a ec:Product ; ec:productName "Apple AirPods Pro 2nd Generation" ; ec:productPrice 1235.32 ; ec:inventoryCount 54 ; ec:belongsToCategory ec:cat1 .
+ec:prod44 a ec:Product ; ec:productName "Under Armour HeatGear T-Shirt" ; ec:productPrice 935.5 ; ec:inventoryCount 31 ; ec:belongsToCategory ec:cat7 .
+ec:prod45 a ec:Product ; ec:productName "Dyson V15 Detect Cordless Vacuum" ; ec:productPrice 1385.36 ; ec:inventoryCount 63 ; ec:belongsToCategory ec:cat13 .
+ec:prod46 a ec:Product ; ec:productName "Fitbit Charge 5 Fitness Tracker" ; ec:productPrice 1036.15 ; ec:inventoryCount 40 ; ec:belongsToCategory ec:cat10 .
+ec:prod47 a ec:Product ; ec:productName "Sony PlayStation 5 Console" ; ec:productPrice 1080.04 ; ec:inventoryCount 66 ; ec:belongsToCategory ec:cat14 .
+ec:prod48 a ec:Product ; ec:productName "Instant Pot Duo 7-in-1 Pressure Cooker" ; ec:productPrice 664.56 ; ec:inventoryCount 8 ; ec:belongsToCategory ec:cat8 .
+ec:prod49 a ec:Product ; ec:productName "Microsoft Xbox Series X Gaming Console" ; ec:productPrice 1726.2 ; ec:inventoryCount 7 ; ec:belongsToCategory ec:cat14 .
+ec:prod50 a ec:Product ; ec:productName "Patagonia Houdini Windbreaker Jacket" ; ec:productPrice 1454.73 ; ec:inventoryCount 97 ; ec:belongsToCategory ec:cat17 .
+ec:prod51 a ec:Product ; ec:productName "Canon EOS R6 Mark II Camera" ; ec:productPrice 1586.27 ; ec:inventoryCount 13 ; ec:belongsToCategory ec:cat12 .
+ec:prod52 a ec:Product ; ec:productName "Allbirds Tree Runners Sneakers" ; ec:productPrice 166.48 ; ec:inventoryCount 43 ; ec:belongsToCategory ec:cat5 .
+ec:prod53 a ec:Product ; ec:productName "Weber Genesis II Gas Grill" ; ec:productPrice 27.91 ; ec:inventoryCount 31 ; ec:belongsToCategory ec:cat19 .
+ec:prod54 a ec:Product ; ec:productName "Apple iPad Pro 12.9-inch" ; ec:productPrice 1645.39 ; ec:inventoryCount 29 ; ec:belongsToCategory ec:cat18 .
+ec:prod55 a ec:Product ; ec:productName "Nespresso Vertuo Plus Coffee Maker" ; ec:productPrice 1786.64 ; ec:inventoryCount 90 ; ec:belongsToCategory ec:cat6 .
+ec:prod56 a ec:Product ; ec:productName "Google Pixel 7 Pro Smartphone" ; ec:productPrice 281.91 ; ec:inventoryCount 5 ; ec:belongsToCategory ec:cat11 .
+ec:prod57 a ec:Product ; ec:productName "Nike Air Force 1 Low White" ; ec:productPrice 1221.76 ; ec:inventoryCount 29 ; ec:belongsToCategory ec:cat5 .
+ec:prod58 a ec:Product ; ec:productName "Amazon Echo Dot 5th Generation" ; ec:productPrice 1300.7 ; ec:inventoryCount 34 ; ec:belongsToCategory ec:cat2 .
+ec:prod59 a ec:Product ; ec:productName "The North Face Denali Fleece Jacket" ; ec:productPrice 1108.01 ; ec:inventoryCount 33 ; ec:belongsToCategory ec:cat17 .
+ec:prod60 a ec:Product ; ec:productName "Vitamix A3500 Ascent Blender" ; ec:productPrice 1533.15 ; ec:inventoryCount 30 ; ec:belongsToCategory ec:cat8 .
+ec:prod61 a ec:Product ; ec:productName "Apple MacBook Pro 14-inch M2" ; ec:productPrice 1217.14 ; ec:inventoryCount 78 ; ec:belongsToCategory ec:cat4 .
+ec:prod62 a ec:Product ; ec:productName "Samsung Galaxy Watch 5" ; ec:productPrice 980.26 ; ec:inventoryCount 7 ; ec:belongsToCategory ec:cat10 .
+ec:prod63 a ec:Product ; ec:productName "Cuisinart Food Processor" ; ec:productPrice 933.91 ; ec:inventoryCount 33 ; ec:belongsToCategory ec:cat8 .
+ec:prod64 a ec:Product ; ec:productName "Sony WH-1000XM5 Headphones" ; ec:productPrice 1526.59 ; ec:inventoryCount 96 ; ec:belongsToCategory ec:cat1 .
+ec:prod65 a ec:Product ; ec:productName "Beats Studio Buds+ Earphones" ; ec:productPrice 430.41 ; ec:inventoryCount 100 ; ec:belongsToCategory ec:cat1 .
+ec:prod66 a ec:Product ; ec:productName "Razer DeathAdder V3 Gaming Mouse" ; ec:productPrice 558.18 ; ec:inventoryCount 87 ; ec:belongsToCategory ec:cat15 .
+ec:prod67 a ec:Product ; ec:productName "Philips Hue Smart Light Bulbs" ; ec:productPrice 898.22 ; ec:inventoryCount 8 ; ec:belongsToCategory ec:cat2 .
+ec:prod68 a ec:Product ; ec:productName "Corsair K95 RGB Mechanical Keyboard" ; ec:productPrice 124.3 ; ec:inventoryCount 93 ; ec:belongsToCategory ec:cat15 .
+ec:prod69 a ec:Product ; ec:productName "Nintendo Switch OLED Console" ; ec:productPrice 1275.15 ; ec:inventoryCount 80 ; ec:belongsToCategory ec:cat14 .
+ec:prod70 a ec:Product ; ec:productName "Alienware Aurora R13 Gaming PC" ; ec:productPrice 352.7 ; ec:inventoryCount 77 ; ec:belongsToCategory ec:cat14 .
+ec:prod71 a ec:Product ; ec:productName "De'Longhi Dinamica Espresso Machine" ; ec:productPrice 680.46 ; ec:inventoryCount 46 ; ec:belongsToCategory ec:cat6 .
+ec:prod72 a ec:Product ; ec:productName "Nest Thermostat Smart Home Device" ; ec:productPrice 389.5 ; ec:inventoryCount 97 ; ec:belongsToCategory ec:cat2 .
+ec:prod73 a ec:Product ; ec:productName "HP EliteBook 840 Business Laptop" ; ec:productPrice 1346.56 ; ec:inventoryCount 22 ; ec:belongsToCategory ec:cat4 .
+ec:prod74 a ec:Product ; ec:productName "Polo Ralph Lauren Oxford Shirt" ; ec:productPrice 299.89 ; ec:inventoryCount 14 ; ec:belongsToCategory ec:cat17 .
+ec:prod75 a ec:Product ; ec:productName "iRobot Roomba j7+ Robot Vacuum" ; ec:productPrice 98.14 ; ec:inventoryCount 34 ; ec:belongsToCategory ec:cat13 .
+ec:prod76 a ec:Product ; ec:productName "Black & Decker Dustbuster Vacuum" ; ec:productPrice 1095.87 ; ec:inventoryCount 14 ; ec:belongsToCategory ec:cat13 .
+ec:prod77 a ec:Product ; ec:productName "OXO Good Grips Kitchen Set" ; ec:productPrice 1388.76 ; ec:inventoryCount 49 ; ec:belongsToCategory ec:cat8 .
+ec:prod78 a ec:Product ; ec:productName "Oakley Holbrook Sunglasses" ; ec:productPrice 194.41 ; ec:inventoryCount 27 ; ec:belongsToCategory ec:cat1 .
+ec:prod79 a ec:Product ; ec:productName "Miele Complete C3 Vacuum Cleaner" ; ec:productPrice 15.67 ; ec:inventoryCount 30 ; ec:belongsToCategory ec:cat13 .
+ec:prod80 a ec:Product ; ec:productName "Puma RS-X Sneakers" ; ec:productPrice 503.56 ; ec:inventoryCount 3 ; ec:belongsToCategory ec:cat5 .
+ec:prod81 a ec:Product ; ec:productName "Bissell CrossWave Pet Pro Cleaner" ; ec:productPrice 438.12 ; ec:inventoryCount 2 ; ec:belongsToCategory ec:cat13 .
+ec:prod82 a ec:Product ; ec:productName "Uniqlo Heattech Long Sleeve Shirt" ; ec:productPrice 113.46 ; ec:inventoryCount 18 ; ec:belongsToCategory ec:cat7 .
+ec:prod83 a ec:Product ; ec:productName "Gap 1969 Premium Denim Jeans" ; ec:productPrice 169.08 ; ec:inventoryCount 25 ; ec:belongsToCategory ec:cat7 .
+ec:prod84 a ec:Product ; ec:productName "Keurig K-Supreme Plus Coffee Maker" ; ec:productPrice 512.71 ; ec:inventoryCount 73 ; ec:belongsToCategory ec:cat6 .
+ec:prod85 a ec:Product ; ec:productName "Traeger Pro 575 Pellet Grill" ; ec:productPrice 1829.91 ; ec:inventoryCount 28 ; ec:belongsToCategory ec:cat19 .
+ec:prod86 a ec:Product ; ec:productName "Fujifilm X-T5 Mirrorless Camera" ; ec:productPrice 1334.72 ; ec:inventoryCount 25 ; ec:belongsToCategory ec:cat12 .
+ec:prod87 a ec:Product ; ec:productName "Asics Gel-Nimbus 25 Running Shoes" ; ec:productPrice 1443.54 ; ec:inventoryCount 2 ; ec:belongsToCategory ec:cat5 .
+ec:prod88 a ec:Product ; ec:productName "Tommy Hilfiger Polo Shirt" ; ec:productPrice 403.49 ; ec:inventoryCount 15 ; ec:belongsToCategory ec:cat17 .
+ec:prod89 a ec:Product ; ec:productName "OnePlus 11 5G Smartphone" ; ec:productPrice 838.28 ; ec:inventoryCount 24 ; ec:belongsToCategory ec:cat11 .
+ec:prod90 a ec:Product ; ec:productName "SteelSeries Arctis 7P Wireless Headset" ; ec:productPrice 512.12 ; ec:inventoryCount 28 ; ec:belongsToCategory ec:cat1 .
+ec:prod91 a ec:Product ; ec:productName "Sennheiser HD 660S2 Headphones" ; ec:productPrice 423.1 ; ec:inventoryCount 35 ; ec:belongsToCategory ec:cat1 .
+ec:prod92 a ec:Product ; ec:productName "Carhartt Insulated Work Jacket" ; ec:productPrice 1239.05 ; ec:inventoryCount 73 ; ec:belongsToCategory ec:cat17 .
+ec:prod93 a ec:Product ; ec:productName "HyperX Alloy Elite RGB Keyboard" ; ec:productPrice 187.53 ; ec:inventoryCount 76 ; ec:belongsToCategory ec:cat15 .
+ec:prod94 a ec:Product ; ec:productName "Sonos One SL Smart Speaker" ; ec:productPrice 859.18 ; ec:inventoryCount 25 ; ec:belongsToCategory ec:cat2 .
+ec:prod95 a ec:Product ; ec:productName "Marshall Acton III Bluetooth Speaker" ; ec:productPrice 1273.59 ; ec:inventoryCount 48 ; ec:belongsToCategory ec:cat16 .
+ec:prod96 a ec:Product ; ec:productName "Canada Goose Expedition Parka" ; ec:productPrice 1381.12 ; ec:inventoryCount 92 ; ec:belongsToCategory ec:cat17 .
+ec:prod97 a ec:Product ; ec:productName "Vans Old Skool Classic Sneakers" ; ec:productPrice 1666.94 ; ec:inventoryCount 44 ; ec:belongsToCategory ec:cat5 .
+ec:prod98 a ec:Product ; ec:productName "Dell XPS 13 Plus Ultrabook" ; ec:productPrice 937.92 ; ec:inventoryCount 42 ; ec:belongsToCategory ec:cat4 .
+ec:prod99 a ec:Product ; ec:productName "TP-Link Archer AX73 WiFi 6 Router" ; ec:productPrice 969.05 ; ec:inventoryCount 96 ; ec:belongsToCategory ec:cat2 .
+ec:prod100 a ec:Product ; ec:productName "Roku Ultra 4K Streaming Device" ; ec:productPrice 255.19 ; ec:inventoryCount 67 ; ec:belongsToCategory ec:cat2 .

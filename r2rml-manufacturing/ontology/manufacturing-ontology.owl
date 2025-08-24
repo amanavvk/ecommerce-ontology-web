@@ -1,0 +1,155 @@
+@prefix : &lt;http://example.org/manufacturing#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix time: &lt;http://www.w3.org/2006/time#&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix sosa: &lt;http://www.w3.org/ns/sosa/&gt; .
+
+&lt;http://example.org/manufacturing&gt; rdf:type owl:Ontology ;
+    rdfs:label "Manufacturing Domain Ontology"@en ;
+    rdfs:comment "An ontology for representing manufacturing processes, machines, and production data."@en ;
+    owl:versionInfo "1.0" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/manufacturing#hasProduction
+:hasProduction rdf:type owl:ObjectProperty ;
+               rdfs:domain :Machine ;
+               rdfs:range :ProductionRun ;
+               rdfs:label "has production"@en ;
+               rdfs:comment "Links a machine to its production runs."@en .
+
+###  http://example.org/manufacturing#locatedAt
+:locatedAt rdf:type owl:ObjectProperty ;
+           rdfs:domain :Machine ;
+           rdfs:range :Location ;
+           rdfs:label "located at"@en ;
+           rdfs:comment "Indicates the physical location of a machine."@en .
+
+###  http://example.org/manufacturing#producedBy
+:producedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :ProductionRun ;
+            rdfs:range :Machine ;
+            rdfs:label "produced by"@en ;
+            rdfs:comment "Links a production run to the machine that performed it."@en ;
+            owl:inverseOf :hasProduction .
+
+###  http://example.org/manufacturing#hasQualityMeasurement
+:hasQualityMeasurement rdf:type owl:ObjectProperty ;
+                       rdfs:domain :ProductionRun ;
+                       rdfs:range :QualityMeasurement ;
+                       rdfs:label "has quality measurement"@en ;
+                       rdfs:comment "Links a production run to its quality assessment."@en .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+###  http://example.org/manufacturing#machineID
+:machineID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Machine ;
+           rdfs:range xsd:string ;
+           rdfs:label "machine ID"@en ;
+           rdfs:comment "Unique identifier for a machine."@en .
+
+###  http://example.org/manufacturing#machineType
+:machineType rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Machine ;
+             rdfs:range xsd:string ;
+             rdfs:label "machine type"@en ;
+             rdfs:comment "The type or model of the machine."@en .
+
+###  http://example.org/manufacturing#installDate
+:installDate rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Machine ;
+             rdfs:range xsd:dateTime ;
+             rdfs:label "install date"@en ;
+             rdfs:comment "The date when the machine was installed."@en .
+
+###  http://example.org/manufacturing#productionID
+:productionID rdf:type owl:DatatypeProperty ;
+              rdfs:domain :ProductionRun ;
+              rdfs:range xsd:string ;
+              rdfs:label "production ID"@en ;
+              rdfs:comment "Unique identifier for a production run."@en .
+
+###  http://example.org/manufacturing#outputQuantity
+:outputQuantity rdf:type owl:DatatypeProperty ;
+                rdfs:domain :ProductionRun ;
+                rdfs:range xsd:integer ;
+                rdfs:label "output quantity"@en ;
+                rdfs:comment "Number of units produced in the production run."@en .
+
+###  http://example.org/manufacturing#timestamp
+:timestamp rdf:type owl:DatatypeProperty ;
+           rdfs:domain :ProductionRun ;
+           rdfs:range xsd:dateTime ;
+           rdfs:label "timestamp"@en ;
+           rdfs:comment "The date and time when the production run occurred."@en .
+
+###  http://example.org/manufacturing#qualityScore
+:qualityScore rdf:type owl:DatatypeProperty ;
+              rdfs:domain :QualityMeasurement ;
+              rdfs:range xsd:decimal ;
+              rdfs:label "quality score"@en ;
+              rdfs:comment "Quality metric ranging from 0 to 100."@en .
+
+###  http://example.org/manufacturing#locationName
+:locationName rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Location ;
+              rdfs:range xsd:string ;
+              rdfs:label "location name"@en ;
+              rdfs:comment "The name or identifier of the location."@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/manufacturing#Machine
+:Machine rdf:type owl:Class ;
+         rdfs:label "Machine"@en ;
+         rdfs:comment "A piece of manufacturing equipment used in production processes."@en .
+
+###  http://example.org/manufacturing#ProductionRun
+:ProductionRun rdf:type owl:Class ;
+               rdfs:label "Production Run"@en ;
+               rdfs:comment "A specific instance of production activity on a machine."@en .
+
+###  http://example.org/manufacturing#QualityMeasurement
+:QualityMeasurement rdf:type owl:Class ;
+                    rdfs:label "Quality Measurement"@en ;
+                    rdfs:comment "A measurement of quality associated with a production run."@en .
+
+###  http://example.org/manufacturing#Location
+:Location rdf:type owl:Class ;
+          rdfs:label "Location"@en ;
+          rdfs:comment "A physical location within the manufacturing facility."@en .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  Example machine types for validation
+:CNCMachine rdf:type :Machine ;
+            :machineType "CNC" ;
+            rdfs:label "CNC Machine Type"@en .
+
+:AssemblyLine rdf:type :Machine ;
+              :machineType "Assembly" ;
+              rdfs:label "Assembly Line Type"@en .
+
+:QualityStation rdf:type :Machine ;
+                :machineType "Quality Control" ;
+                rdfs:label "Quality Control Station Type"@en .
+
+#################################################################
+#    Annotations
+#################################################################
+
+rdfs:label rdfs:comment "Standard RDFS label property used for human-readable names."@en .
+rdfs:comment rdfs:comment "Standard RDFS comment property used for descriptions."@en .

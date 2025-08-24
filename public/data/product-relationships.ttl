@@ -1,0 +1,145 @@
+# Sample Product Relationships Data
+# This extends the existing e-commerce data with product-to-product relationships
+
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Product Accessories Relationships
+ec:prod1 ec:hasAccessory ec:prod15 .  # TV has wireless headphones as accessory
+ec:prod1 ec:hasAccessory ec:prod25 .  # TV has HDMI cable as accessory
+ec:prod1 ec:hasAccessory ec:prod30 .  # TV has wall mount as accessory
+
+ec:prod2 ec:hasAccessory ec:prod16 .  # Laptop has wireless mouse as accessory
+ec:prod2 ec:hasAccessory ec:prod26 .  # Laptop has laptop stand as accessory
+ec:prod2 ec:hasAccessory ec:prod31 .  # Laptop has external keyboard as accessory
+
+ec:prod5 ec:hasAccessory ec:prod17 .  # Smartphone has wireless charger
+ec:prod5 ec:hasAccessory ec:prod27 .  # Smartphone has phone case
+ec:prod5 ec:hasAccessory ec:prod32 .  # Smartphone has screen protector
+
+# Product Variants (different sizes, colors, specifications)
+ec:prod3 ec:hasVariant ec:prod33 .   # Nike shoes - different size
+ec:prod3 ec:hasVariant ec:prod34 .   # Nike shoes - different color
+ec:prod4 ec:hasVariant ec:prod35 .   # Adidas shoes - different model
+
+ec:prod7 ec:hasVariant ec:prod36 .   # Jeans - different size
+ec:prod7 ec:hasVariant ec:prod37 .   # Jeans - different wash
+
+ec:prod5 ec:hasVariant ec:prod38 .   # Smartphone - different storage capacity
+ec:prod5 ec:hasVariant ec:prod39 .   # Smartphone - different color
+
+# Related Products (frequently bought together, similar category)
+ec:prod1 ec:isRelatedTo ec:prod2 .   # TV related to laptop (entertainment setup)
+ec:prod1 ec:isRelatedTo ec:prod5 .   # TV related to smartphone (streaming)
+ec:prod2 ec:isRelatedTo ec:prod5 .   # Laptop related to smartphone (sync)
+
+ec:prod3 ec:isRelatedTo ec:prod4 .   # Nike shoes related to Adidas shoes
+ec:prod3 ec:isRelatedTo ec:prod10 .  # Running shoes related to sports clothing
+ec:prod4 ec:isRelatedTo ec:prod10 .  # Adidas shoes related to sports clothing
+
+ec:prod6 ec:isRelatedTo ec:prod7 .   # T-shirt related to jeans (outfit)
+ec:prod6 ec:isRelatedTo ec:prod8 .   # T-shirt related to jacket
+ec:prod7 ec:isRelatedTo ec:prod8 .   # Jeans related to jacket
+
+# Cross-category relationships
+ec:prod11 ec:isRelatedTo ec:prod3 .  # Fitness tracker related to running shoes
+ec:prod11 ec:isRelatedTo ec:prod4 .  # Fitness tracker related to sports shoes
+ec:prod12 ec:isRelatedTo ec:prod6 .  # Book related to casual clothing (lifestyle)
+
+# New accessory and variant products
+ec:prod15 a ec:Product ;
+    ec:productName "Wireless Bluetooth Headphones" ;
+    ec:productPrice "79.99"^^xsd:decimal ;
+    ec:inventoryCount "25"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod16 a ec:Product ;
+    ec:productName "Wireless Mouse" ;
+    ec:productPrice "29.99"^^xsd:decimal ;
+    ec:inventoryCount "40"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod17 a ec:Product ;
+    ec:productName "Wireless Charging Pad" ;
+    ec:productPrice "35.00"^^xsd:decimal ;
+    ec:inventoryCount "30"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod25 a ec:Product ;
+    ec:productName "HDMI Cable 4K" ;
+    ec:productPrice "15.99"^^xsd:decimal ;
+    ec:inventoryCount "100"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod26 a ec:Product ;
+    ec:productName "Adjustable Laptop Stand" ;
+    ec:productPrice "45.00"^^xsd:decimal ;
+    ec:inventoryCount "20"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod27 a ec:Product ;
+    ec:productName "Protective Phone Case" ;
+    ec:productPrice "19.99"^^xsd:decimal ;
+    ec:inventoryCount "75"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod30 a ec:Product ;
+    ec:productName "TV Wall Mount" ;
+    ec:productPrice "89.99"^^xsd:decimal ;
+    ec:inventoryCount "15"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod31 a ec:Product ;
+    ec:productName "Mechanical Keyboard" ;
+    ec:productPrice "120.00"^^xsd:decimal ;
+    ec:inventoryCount "18"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod32 a ec:Product ;
+    ec:productName "Tempered Glass Screen Protector" ;
+    ec:productPrice "12.99"^^xsd:decimal ;
+    ec:inventoryCount "50"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+# Product Variants
+ec:prod33 a ec:Product ;
+    ec:productName "Nike Air Max 270 Running Shoes - Size 11" ;
+    ec:productPrice "150.00"^^xsd:decimal ;
+    ec:inventoryCount "12"^^xsd:integer ;
+    ec:belongsToCategory ec:cat2 .  # Sports
+
+ec:prod34 a ec:Product ;
+    ec:productName "Nike Air Max 270 Running Shoes - Black/Red" ;
+    ec:productPrice "155.00"^^xsd:decimal ;
+    ec:inventoryCount "8"^^xsd:integer ;
+    ec:belongsToCategory ec:cat2 .  # Sports
+
+ec:prod35 a ec:Product ;
+    ec:productName "Adidas Ultraboost 22 - Black" ;
+    ec:productPrice "180.00"^^xsd:decimal ;
+    ec:inventoryCount "15"^^xsd:integer ;
+    ec:belongsToCategory ec:cat2 .  # Sports
+
+ec:prod36 a ec:Product ;
+    ec:productName "Levi's 501 Jeans - Size 32" ;
+    ec:productPrice "69.99"^^xsd:decimal ;
+    ec:inventoryCount "22"^^xsd:integer ;
+    ec:belongsToCategory ec:cat3 .  # Clothing
+
+ec:prod37 a ec:Product ;
+    ec:productName "Levi's 501 Jeans - Light Wash" ;
+    ec:productPrice "69.99"^^xsd:decimal ;
+    ec:inventoryCount "18"^^xsd:integer ;
+    ec:belongsToCategory ec:cat3 .  # Clothing
+
+ec:prod38 a ec:Product ;
+    ec:productName "iPhone 14 - 256GB" ;
+    ec:productPrice "899.99"^^xsd:decimal ;
+    ec:inventoryCount "5"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics
+
+ec:prod39 a ec:Product ;
+    ec:productName "iPhone 14 - Blue" ;
+    ec:productPrice "799.99"^^xsd:decimal ;
+    ec:inventoryCount "7"^^xsd:integer ;
+    ec:belongsToCategory ec:cat1 .  # Electronics

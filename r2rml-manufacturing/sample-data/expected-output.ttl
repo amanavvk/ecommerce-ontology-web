@@ -1,0 +1,148 @@
+@prefix ex: &lt;http://example.org/manufacturing/data/&gt; .
+@prefix mfg: &lt;http://example.org/manufacturing#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# This file shows the expected RDF output when the R2RML mappings are applied to the sample database
+
+#################################################################
+#    Machine Instances
+#################################################################
+
+ex:machine/M001 rdf:type mfg:Machine ;
+    mfg:machineID "M001" ;
+    mfg:machineType "CNC Milling Machine" ;
+    mfg:installDate "2020-01-15T09:00:00"^^xsd:dateTime ;
+    mfg:locatedAt ex:location/Factory%20Floor%20A ;
+    mfg:locationName "Factory Floor A" .
+
+ex:machine/M002 rdf:type mfg:Machine ;
+    mfg:machineID "M002" ;
+    mfg:machineType "Assembly Line Station" ;
+    mfg:installDate "2019-06-20T10:30:00"^^xsd:dateTime ;
+    mfg:locatedAt ex:location/Factory%20Floor%20B ;
+    mfg:locationName "Factory Floor B" .
+
+ex:machine/M003 rdf:type mfg:Machine ;
+    mfg:machineID "M003" ;
+    mfg:machineType "Quality Control Scanner" ;
+    mfg:installDate "2021-03-10T14:15:00"^^xsd:dateTime ;
+    mfg:locatedAt ex:location/Quality%20Lab ;
+    mfg:locationName "Quality Lab" .
+
+# Additional machines would follow the same pattern...
+
+#################################################################
+#    Location Instances
+#################################################################
+
+ex:location/Factory%20Floor%20A rdf:type mfg:Location ;
+    mfg:locationName "Factory Floor A" .
+
+ex:location/Factory%20Floor%20B rdf:type mfg:Location ;
+    mfg:locationName "Factory Floor B" .
+
+ex:location/Quality%20Lab rdf:type mfg:Location ;
+    mfg:locationName "Quality Lab" .
+
+ex:location/Shipping%20Dock rdf:type mfg:Location ;
+    mfg:locationName "Shipping Dock" .
+
+ex:location/Factory%20Floor%20C rdf:type mfg:Location ;
+    mfg:locationName "Factory Floor C" .
+
+ex:location/Finishing%20Area rdf:type mfg:Location ;
+    mfg:locationName "Finishing Area" .
+
+#################################################################
+#    Production Run Instances
+#################################################################
+
+ex:production/P001 rdf:type mfg:ProductionRun ;
+    mfg:productionID "P001" ;
+    mfg:outputQuantity 150 ;
+    mfg:timestamp "2024-01-15T08:30:00"^^xsd:dateTime ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:hasQualityMeasurement ex:quality/P001 ;
+    rdfs:label "Production Run P001 on CNC Milling Machine at Factory Floor A" ;
+    rdfs:comment "Production run P001 produced 150 units with quality score 95.5" .
+
+ex:production/P002 rdf:type mfg:ProductionRun ;
+    mfg:productionID "P002" ;
+    mfg:outputQuantity 142 ;
+    mfg:timestamp "2024-01-15T16:45:00"^^xsd:dateTime ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:hasQualityMeasurement ex:quality/P002 ;
+    rdfs:label "Production Run P002 on CNC Milling Machine at Factory Floor A" ;
+    rdfs:comment "Production run P002 produced 142 units with quality score 92.3" .
+
+ex:production/P003 rdf:type mfg:ProductionRun ;
+    mfg:productionID "P003" ;
+    mfg:outputQuantity 200 ;
+    mfg:timestamp "2024-01-15T09:15:00"^^xsd:dateTime ;
+    mfg:producedBy ex:machine/M002 ;
+    mfg:hasQualityMeasurement ex:quality/P003 ;
+    rdfs:label "Production Run P003 on Assembly Line Station at Factory Floor B" ;
+    rdfs:comment "Production run P003 produced 200 units with quality score 88.7" .
+
+# High Quality Production Runs (Quality Score >= 90)
+ex:production/P001 mfg:qualityCategory "High Quality" .
+ex:production/P002 mfg:qualityCategory "High Quality" .
+ex:production/P004 mfg:qualityCategory "High Quality" .
+ex:production/P006 mfg:qualityCategory "High Quality" .
+ex:production/P007 mfg:qualityCategory "High Quality" .
+ex:production/P009 mfg:qualityCategory "High Quality" .
+ex:production/P010 mfg:qualityCategory "High Quality" .
+ex:production/P012 mfg:qualityCategory "High Quality" .
+ex:production/P015 mfg:qualityCategory "High Quality" .
+ex:production/P017 mfg:qualityCategory "High Quality" .
+ex:production/P019 mfg:qualityCategory "High Quality" .
+ex:production/P020 mfg:qualityCategory "High Quality" .
+ex:production/P025 mfg:qualityCategory "High Quality" .
+ex:production/P026 mfg:qualityCategory "High Quality" .
+ex:production/P027 mfg:qualityCategory "High Quality" .
+ex:production/P028 mfg:qualityCategory "High Quality" .
+
+# Low Quality Production Runs (Quality Score < 70)
+ex:production/P021 mfg:qualityCategory "Needs Improvement" .
+ex:production/P023 mfg:qualityCategory "Needs Improvement" .
+ex:production/P024 mfg:qualityCategory "Needs Improvement" .
+
+# Additional production runs would follow the same pattern...
+
+#################################################################
+#    Quality Measurement Instances
+#################################################################
+
+ex:quality/P001 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 95.5 .
+
+ex:quality/P002 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 92.3 .
+
+ex:quality/P003 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 88.7 .
+
+ex:quality/P004 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 96.2 .
+
+ex:quality/P021 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 68.5 .
+
+ex:quality/P025 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 98.2 .
+
+ex:quality/P028 rdf:type mfg:QualityMeasurement ;
+    mfg:qualityScore 99.1 .
+
+# Additional quality measurements would follow the same pattern...
+
+#################################################################
+#    Relationships and Inferences
+#################################################################
+
+# Inverse relationships (automatically inferred)
+ex:machine/M001 mfg:hasProduction ex:production/P001 .
+ex:machine/M001 mfg:hasProduction ex:production/P002 .
+ex:machine/M002 mfg:hasProduction ex:production/P003 .

@@ -1,0 +1,16 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Users
+
+ec:user1 a ec:User ;
+    ec:userName "john_doe" ;
+    ec:email "john.doe@email.com" .
+
+ec:user2 a ec:User ;
+    ec:userName "jane_smith" ;
+    ec:email "jane.smith@email.com" .
+
+ec:user3 a ec:User ;
+    ec:userName "alice_wonder" ;
+    ec:email "alice.wonder@email.com" .

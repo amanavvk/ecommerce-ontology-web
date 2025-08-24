@@ -1,0 +1,12 @@
+PREFIX ex: <http://example.org/ecommerce#>
+
+SELECT ?product ?name ?category ?price
+WHERE {
+  ?product a ex:Product ;
+           ex:productName ?name ;
+           ex:productCategory ?category ;
+           ex:productPrice ?price .
+  FILTER(CONTAINS(LCASE(?name), "search_term") || 
+         CONTAINS(LCASE(?category), "search_term"))
+}
+ORDER BY ?price

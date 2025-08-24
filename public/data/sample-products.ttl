@@ -1,0 +1,20 @@
+@prefix ex: <http://example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Product1 a ex:Product ;
+    ex:productName "Sample Product 1" ;
+    ex:productCategory ex:Category1 ;
+    ex:productPrice "29.99"^^xsd:decimal ;
+    ex:productDescription "This is a description for Sample Product 1." .
+
+ex:Product2 a ex:Product ;
+    ex:productName "Sample Product 2" ;
+    ex:productCategory ex:Category2 ;
+    ex:productPrice "49.99"^^xsd:decimal ;
+    ex:productDescription "This is a description for Sample Product 2." .
+
+ex:Category1 a ex:Category ;
+    ex:categoryName "Electronics" .
+
+ex:Category2 a ex:Category ;
+    ex:categoryName "Home Appliances" .

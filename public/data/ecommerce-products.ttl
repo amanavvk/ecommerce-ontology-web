@@ -1,0 +1,19 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Categories
+
+ec:cat1 a ec:Category ; ec:categoryName "Electronics" .
+ec:cat2 a ec:Category ; ec:categoryName "Computers" ; ec:parentCategory ec:cat1 .
+ec:cat3 a ec:Category ; ec:categoryName "Accessories" ; ec:parentCategory ec:cat1 .
+ec:cat4 a ec:Category ; ec:categoryName "Clothing" .
+ec:cat5 a ec:Category ; ec:categoryName "Shoes" ; ec:parentCategory ec:cat4 .
+
+# Products
+
+ec:prod1 a ec:Product ; ec:productName "Laptop" ; ec:productPrice 1200.00 ; ec:inventoryCount 15 ; ec:belongsToCategory ec:cat2 .
+ec:prod2 a ec:Product ; ec:productName "Smartphone" ; ec:productPrice 800.00 ; ec:inventoryCount 30 ; ec:belongsToCategory ec:cat1 .
+ec:prod3 a ec:Product ; ec:productName "Headphones" ; ec:productPrice 150.00 ; ec:inventoryCount 50 ; ec:belongsToCategory ec:cat3 .
+ec:prod4 a ec:Product ; ec:productName "Running Shoes" ; ec:productPrice 99.99 ; ec:inventoryCount 20 ; ec:belongsToCategory ec:cat5 .
+ec:prod5 a ec:Product ; ec:productName "T-Shirt" ; ec:productPrice 19.99 ; ec:inventoryCount 100 ; ec:belongsToCategory ec:cat4 .
+ec:prod6 a ec:Product ; ec:productName "Wireless Mouse" ; ec:productPrice 25.00 ; ec:inventoryCount 60 ; ec:belongsToCategory ec:cat3 .

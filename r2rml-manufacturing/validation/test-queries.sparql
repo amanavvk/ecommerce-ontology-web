@@ -1,0 +1,175 @@
+# SPARQL Test Queries for R2RML Manufacturing Integration
+
+# Basic entity retrieval queries
+PREFIX mfg: <http://example.org/manufacturing#>
+PREFIX ex: <http://example.org/manufacturing/data/>
+
+# Query 1: List all machines with their properties
+SELECT ?machine ?machineID ?type ?location ?installDate WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineID ?machineID ;
+           mfg:machineType ?type ;
+           mfg:locationName ?location ;
+           mfg:installDate ?installDate .
+} ORDER BY ?machineID
+
+# Query 2: Find all production runs for a specific machine
+SELECT ?production ?productionID ?timestamp ?quantity ?qualityScore WHERE {
+  <http://example.org/manufacturing/data/machine/M001> mfg:hasProduction ?production .
+  ?production mfg:productionID ?productionID ;
+              mfg:timestamp ?timestamp ;
+              mfg:outputQuantity ?quantity ;
+              mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?qualityScore .
+} ORDER BY ?timestamp
+
+# Query 3: Calculate average quality by machine type
+SELECT ?machineType (AVG(?qualityScore) as ?avgQuality) (COUNT(?production) as ?productionCount) WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineType ?machineType ;
+           mfg:hasProduction ?production .
+  ?production mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?qualityScore .
+} GROUP BY ?machineType
+ORDER BY DESC(?avgQuality)
+
+# Query 4: Find high-quality production runs (quality >= 95)
+SELECT ?production ?machine ?machineType ?qualityScore ?outputQuantity WHERE {
+  ?production a mfg:ProductionRun ;
+              mfg:producedBy ?machine ;
+              mfg:outputQuantity ?outputQuantity ;
+              mfg:hasQualityMeasurement ?qm .
+  ?machine mfg:machineType ?machineType .
+  ?qm mfg:qualityScore ?qualityScore .
+  FILTER(?qualityScore >= 95.0)
+} ORDER BY DESC(?qualityScore)
+
+# Query 5: Production timeline analysis
+SELECT ?date (COUNT(?production) as ?productionRuns) (AVG(?quality) as ?avgQuality) WHERE {
+  ?production a mfg:ProductionRun ;
+              mfg:timestamp ?timestamp ;
+              mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?quality .
+  BIND(xsd:date(?timestamp) as ?date)
+} GROUP BY ?date
+ORDER BY ?date
+
+# Query 6: Find machines with quality issues (avg quality < 80)
+SELECT ?machine ?machineType ?location (AVG(?qualityScore) as ?avgQuality) WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineType ?machineType ;
+           mfg:locationName ?location ;
+           mfg:hasProduction ?production .
+  ?production mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?qualityScore .
+} GROUP BY ?machine ?machineType ?location
+HAVING (AVG(?qualityScore) < 80.0)
+ORDER BY ?avgQuality
+
+# Query 7: Location-based production analysis
+SELECT ?location (COUNT(DISTINCT ?machine) as ?machineCount) (COUNT(?production) as ?totalProduction) (AVG(?quality) as ?avgQuality) WHERE {
+  ?machine a mfg:Machine ;
+           mfg:locationName ?location ;
+           mfg:hasProduction ?production .
+  ?production mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?quality .
+} GROUP BY ?location
+ORDER BY DESC(?totalProduction)
+
+# Query 8: Find production runs with quality categorization
+SELECT ?production ?qualityCategory ?qualityScore ?outputQuantity WHERE {
+  ?production a mfg:ProductionRun ;
+              mfg:outputQuantity ?outputQuantity ;
+              mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?qualityScore .
+  OPTIONAL { ?production mfg:qualityCategory ?qualityCategory }
+} ORDER BY DESC(?qualityScore)
+
+# Query 9: Machine efficiency analysis (output per hour)
+SELECT ?machine ?machineType 
+       (SUM(?outputQuantity) as ?totalOutput)
+       (COUNT(?production) as ?productionRuns)
+       (SUM(?outputQuantity) / COUNT(?production) as ?avgOutput) WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineType ?machineType ;
+           mfg:hasProduction ?production .
+  ?production mfg:outputQuantity ?outputQuantity .
+} GROUP BY ?machine ?machineType
+ORDER BY DESC(?avgOutput)
+
+# Query 10: Quality trend over time
+SELECT ?timestamp ?qualityScore ?machineType WHERE {
+  ?production a mfg:ProductionRun ;
+              mfg:timestamp ?timestamp ;
+              mfg:producedBy ?machine ;
+              mfg:hasQualityMeasurement ?qm .
+  ?machine mfg:machineType ?machineType .
+  ?qm mfg:qualityScore ?qualityScore .
+} ORDER BY ?timestamp
+
+# Query 11: Cross-location quality comparison
+SELECT ?location1 ?location2 (AVG(?q1) as ?avgQuality1) (AVG(?q2) as ?avgQuality2) WHERE {
+  ?m1 mfg:locationName ?location1 ;
+      mfg:hasProduction ?p1 .
+  ?m2 mfg:locationName ?location2 ;
+      mfg:hasProduction ?p2 .
+  ?p1 mfg:hasQualityMeasurement/mfg:qualityScore ?q1 .
+  ?p2 mfg:hasQualityMeasurement/mfg:qualityScore ?q2 .
+  FILTER(?location1 < ?location2)
+} GROUP BY ?location1 ?location2
+
+# Query 12: Machine age vs. quality correlation
+SELECT ?machine ?machineType ?installDate ?avgQuality WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineType ?machineType ;
+           mfg:installDate ?installDate .
+  {
+    SELECT ?machine (AVG(?qualityScore) as ?avgQuality) WHERE {
+      ?machine mfg:hasProduction ?production .
+      ?production mfg:hasQualityMeasurement ?qm .
+      ?qm mfg:qualityScore ?qualityScore .
+    } GROUP BY ?machine
+  }
+} ORDER BY ?installDate
+
+# Validation queries for testing
+
+# Count total entities by type
+SELECT ?type (COUNT(?entity) as ?count) WHERE {
+  ?entity a ?type .
+  FILTER(?type IN (mfg:Machine, mfg:ProductionRun, mfg:QualityMeasurement, mfg:Location))
+} GROUP BY ?type
+
+# Verify all productions have machines
+SELECT ?production WHERE {
+  ?production a mfg:ProductionRun .
+  FILTER NOT EXISTS { ?production mfg:producedBy ?machine }
+}
+
+# Check for orphaned quality measurements
+SELECT ?quality WHERE {
+  ?quality a mfg:QualityMeasurement .
+  FILTER NOT EXISTS { ?production mfg:hasQualityMeasurement ?quality }
+}
+
+# Verify URI consistency
+SELECT ?entity WHERE {
+  ?entity a mfg:Machine .
+  FILTER(!REGEX(STR(?entity), "^http://example.org/manufacturing/data/machine/"))
+}
+
+# Performance test query
+SELECT ?machineType 
+       (COUNT(?production) as ?totalRuns)
+       (AVG(?quality) as ?avgQuality)
+       (MIN(?quality) as ?minQuality)
+       (MAX(?quality) as ?maxQuality)
+       (SUM(?output) as ?totalOutput) WHERE {
+  ?machine a mfg:Machine ;
+           mfg:machineType ?machineType ;
+           mfg:hasProduction ?production .
+  ?production mfg:outputQuantity ?output ;
+              mfg:hasQualityMeasurement ?qm .
+  ?qm mfg:qualityScore ?quality .
+} GROUP BY ?machineType
+ORDER BY DESC(?avgQuality)

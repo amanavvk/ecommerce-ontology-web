@@ -1,0 +1,154 @@
+# R2RML Mapping for Manufacturing Database Integration
+# Maps legacy relational manufacturing data to RDF using Manufacturing Ontology
+# 
+# This mapping transforms:
+# - Machine table -> Manufacturing Machine instances
+# - Production table -> Production Run instances with quality measurements
+# 
+# Author: Manufacturing Integration Team
+# Version: 1.0
+# Date: 2024
+
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix mfg: <http://example.org/manufacturing#> .
+@prefix ex: <http://example.org/manufacturing/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================================
+# Machine Mapping
+# Maps the Machine table to mfg:Machine instances
+# =====================================================================
+
+<#MachineMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Machine" ] ;
+    
+    # Subject: Generate URI for each machine using machine ID
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/machine/{MachineID}" ;
+        rr:class mfg:Machine
+    ] ;
+    
+    # Predicate-Object: Machine ID
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineID ;
+        rr:objectMap [ rr:column "MachineID" ]
+    ] ;
+    
+    # Predicate-Object: Machine Type
+    rr:predicateObjectMap [
+        rr:predicate mfg:machineType ;
+        rr:objectMap [ rr:column "Type" ]
+    ] ;
+    
+    # Predicate-Object: Location
+    rr:predicateObjectMap [
+        rr:predicate mfg:locationName ;
+        rr:objectMap [ rr:column "Location" ]
+    ] ;
+    
+    # Predicate-Object: Install Date
+    rr:predicateObjectMap [
+        rr:predicate mfg:installDate ;
+        rr:objectMap [ 
+            rr:column "InstallDate" ;
+            rr:datatype xsd:date
+        ]
+    ] .
+
+# =====================================================================
+# Production Run Mapping
+# Maps the Production table to mfg:ProductionRun instances
+# =====================================================================
+
+<#ProductionMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Production" ] ;
+    
+    # Subject: Generate URI for each production run
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/production/{ProductionID}" ;
+        rr:class mfg:ProductionRun
+    ] ;
+    
+    # Predicate-Object: Production ID
+    rr:predicateObjectMap [
+        rr:predicate mfg:productionID ;
+        rr:objectMap [ rr:column "ProductionID" ]
+    ] ;
+    
+    # Predicate-Object: Machine relationship (foreign key)
+    rr:predicateObjectMap [
+        rr:predicate mfg:producedBy ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/machine/{MachineID}"
+        ]
+    ] ;
+    
+    # Predicate-Object: Timestamp
+    rr:predicateObjectMap [
+        rr:predicate mfg:timestamp ;
+        rr:objectMap [ 
+            rr:column "Timestamp" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    
+    # Predicate-Object: Output Quantity
+    rr:predicateObjectMap [
+        rr:predicate mfg:outputQuantity ;
+        rr:objectMap [ 
+            rr:column "Output_Quantity" ;
+            rr:datatype xsd:integer
+        ]
+    ] ;
+    
+    # Predicate-Object: Quality Measurement relationship
+    rr:predicateObjectMap [
+        rr:predicate mfg:hasQualityMeasurement ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/quality/{ProductionID}"
+        ]
+    ] .
+
+# =====================================================================
+# Quality Measurement Mapping
+# Maps quality scores from Production table to separate Quality instances
+# =====================================================================
+
+<#QualityMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Production" ] ;
+    
+    # Subject: Generate URI for quality measurement
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/quality/{ProductionID}" ;
+        rr:class mfg:QualityMeasurement
+    ] ;
+    
+    # Predicate-Object: Quality Score
+    rr:predicateObjectMap [
+        rr:predicate mfg:qualityScore ;
+        rr:objectMap [ 
+            rr:column "Quality_Score" ;
+            rr:datatype xsd:decimal
+        ]
+    ] .
+
+# =====================================================================
+# Reverse Machine-Production Relationship
+# Creates the inverse hasProduction relationship from Machine to Production
+# =====================================================================
+
+<#MachineProductionMap> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "Production" ] ;
+    
+    # Subject: Machine URI (from foreign key)
+    rr:subjectMap [
+        rr:template "http://example.org/manufacturing/data/machine/{MachineID}"
+    ] ;
+    
+    # Predicate-Object: Has Production relationship
+    rr:predicateObjectMap [
+        rr:predicate mfg:hasProduction ;
+        rr:objectMap [
+            rr:template "http://example.org/manufacturing/data/production/{ProductionID}"
+        ]
+    ] .

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:ec="http://www.example.org/ecommerce#">
+
+    <owl:Ontology rdf:about="http://www.example.org/ecommerce#"/>
+
+    <!-- Core Classes -->
+    <owl:Class rdf:about="http://www.example.org/ecommerce#Category"/>
+    <owl:Class rdf:about="http://www.example.org/ecommerce#Product"/>
+    <owl:Class rdf:about="http://www.example.org/ecommerce#User"/>
+    <owl:Class rdf:about="http://www.example.org/ecommerce#Order"/>
+
+    <!-- Category Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#categoryName">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Category"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#parentCategory">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Category"/>
+        <rdfs:range rdf:resource="http://www.example.org/ecommerce#Category"/>
+    </owl:ObjectProperty>
+
+    <!-- Product Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#productName">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#productPrice">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#inventoryCount">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#belongsToCategory">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Product"/>
+        <rdfs:range rdf:resource="http://www.example.org/ecommerce#Category"/>
+    </owl:ObjectProperty>
+
+    <!-- User Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#userName">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#email">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- Order Properties -->
+    <owl:DatatypeProperty rdf:about="http://www.example.org/ecommerce#orderDate">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#placedBy">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+        <rdfs:range rdf:resource="http://www.example.org/ecommerce#User"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.example.org/ecommerce#containsProduct">
+        <rdfs:domain rdf:resource="http://www.example.org/ecommerce#Order"/>
+        <rdfs:range rdf:resource="http://www.example.org/ecommerce#Product"/>
+    </owl:ObjectProperty>
+
+ </rdf:RDF>

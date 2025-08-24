@@ -1,0 +1,33 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ec:user1 a ec:User ; ec:userName "dawnaustin" ; ec:email "pmiddleton@example.org" .
+ec:user2 a ec:User ; ec:userName "jessicacortez" ; ec:email "whitneyhuffman@example.com" .
+ec:user3 a ec:User ; ec:userName "frenchlogan" ; ec:email "vickiarmstrong@example.net" .
+ec:user4 a ec:User ; ec:userName "bakerjohnny" ; ec:email "oliviamills@example.com" .
+ec:user5 a ec:User ; ec:userName "heatherhuff" ; ec:email "stephanieorozco@example.com" .
+ec:user6 a ec:User ; ec:userName "barbara25" ; ec:email "ocook@example.org" .
+ec:user7 a ec:User ; ec:userName "katherinefisher" ; ec:email "collinspatricia@example.net" .
+ec:user8 a ec:User ; ec:userName "xolson" ; ec:email "myersjohn@example.org" .
+ec:user9 a ec:User ; ec:userName "howardnichols" ; ec:email "max41@example.org" .
+ec:user10 a ec:User ; ec:userName "nmckenzie" ; ec:email "uthomas@example.org" .
+ec:user11 a ec:User ; ec:userName "jacob68" ; ec:email "umorris@example.net" .
+ec:user12 a ec:User ; ec:userName "ebowers" ; ec:email "zperez@example.org" .
+ec:user13 a ec:User ; ec:userName "mchoi" ; ec:email "kshelton@example.org" .
+ec:user14 a ec:User ; ec:userName "tonya51" ; ec:email "mendozakimberly@example.com" .
+ec:user15 a ec:User ; ec:userName "amanda92" ; ec:email "kellyparker@example.org" .
+ec:user16 a ec:User ; ec:userName "laura95" ; ec:email "joyce71@example.org" .
+ec:user17 a ec:User ; ec:userName "iwoodard" ; ec:email "barbara48@example.net" .
+ec:user18 a ec:User ; ec:userName "fmartinez" ; ec:email "sarah92@example.com" .
+ec:user19 a ec:User ; ec:userName "ycarney" ; ec:email "christina85@example.org" .
+ec:user20 a ec:User ; ec:userName "brandon20" ; ec:email "brentgomez@example.com" .
+ec:user21 a ec:User ; ec:userName "flopez" ; ec:email "williamsmary@example.net" .
+ec:user22 a ec:User ; ec:userName "kyle10" ; ec:email "toni49@example.com" .
+ec:user23 a ec:User ; ec:userName "blackkristin" ; ec:email "dustin39@example.com" .
+ec:user24 a ec:User ; ec:userName "emily30" ; ec:email "salinasjoshua@example.org" .
+ec:user25 a ec:User ; ec:userName "allenmisty" ; ec:email "lorettacortez@example.com" .
+ec:user26 a ec:User ; ec:userName "vanessakaiser" ; ec:email "crystal27@example.net" .
+ec:user27 a ec:User ; ec:userName "allenbrian" ; ec:email "ifrederick@example.org" .
+ec:user28 a ec:User ; ec:userName "mikaylaford" ; ec:email "baileyanne@example.com" .
+ec:user29 a ec:User ; ec:userName "mariolynn" ; ec:email "sgibson@example.net" .
+ec:user30 a ec:User ; ec:userName "pnewton" ; ec:email "jimmyramirez@example.net" .

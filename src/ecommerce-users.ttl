@@ -1,0 +1,113 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ex: <http://example.org/ecommerce#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+
+
+# Classes
+ex:User a owl:Class .
+ex:Product a owl:Class ;
+    rdfs:subClassOf schema:Product .
+ex:Order a owl:Class .
+ex:Category a owl:Class .
+
+# Category hierarchy
+ex:Electronics a owl:Class ;
+    rdfs:subClassOf ex:Category .
+ex:Computers a owl:Class ;
+    rdfs:subClassOf ex:Electronics .
+ex:Accessories a owl:Class ;
+    rdfs:subClassOf ex:Electronics .
+ex:Clothing a owl:Class ;
+    rdfs:subClassOf ex:Category .
+ex:Shoes a owl:Class ;
+    rdfs:subClassOf ex:Clothing .
+
+
+
+# Datatype properties
+ex:userName a owl:DatatypeProperty .
+ex:email a owl:DatatypeProperty .
+ex:firstName a owl:DatatypeProperty .
+ex:lastName a owl:DatatypeProperty .
+ex:containsProduct a owl:ObjectProperty .
+ex:hasCategory a owl:ObjectProperty .
+ex:placedBy a owl:ObjectProperty .
+ex:productName a owl:DatatypeProperty .
+ex:productPrice a owl:DatatypeProperty .
+# Inventory and recommendation properties
+ex:inventoryCount a owl:DatatypeProperty .
+ex:isAccessoryOf a owl:ObjectProperty .
+ex:isSimilarTo a owl:ObjectProperty .
+ex:recommendedWith a owl:ObjectProperty .
+
+# Example individuals (users, products, categories, orders)
+ex:user1 a ex:User ;
+    ex:userName "john_doe" ;
+    ex:email "john.doe@email.com" ;
+    ex:firstName "John" ;
+    ex:lastName "Doe" .
+
+
+ex:product1 a ex:Product, ex:Computers ;
+    ex:productName "Laptop" ;
+    ex:productPrice "1200" ;
+    ex:hasCategory ex:category1 ;
+    ex:inventoryCount "15" ;
+    ex:isSimilarTo ex:product2 ;
+    ex:recommendedWith ex:product3 .
+
+ex:category1 a ex:Category .
+
+ex:order1 a ex:Order ;
+    ex:containsProduct ex:product1 ;
+    ex:placedBy ex:user1 .
+
+ex:user2 a ex:User ;
+    ex:userName "jane_smith" ;
+    ex:email "jane.smith@email.com" ;
+    ex:firstName "Jane" ;
+    ex:lastName "Smith" .
+  
+# Additional categories
+ex:category2 a ex:Category .
+ex:category3 a ex:Category .
+
+# Additional products
+
+ex:product2 a ex:Product, ex:Electronics ;
+    ex:productName "Smartphone" ;
+    ex:productPrice "800" ;
+    ex:hasCategory ex:category2 ;
+    ex:inventoryCount "30" ;
+    ex:isSimilarTo ex:product1 .
+
+
+ex:product3 a ex:Product, ex:Accessories ;
+    ex:productName "Headphones" ;
+    ex:productPrice "150" ;
+    ex:hasCategory ex:category3 ;
+    ex:inventoryCount "50" ;
+    ex:isAccessoryOf ex:product1 .
+
+# Additional users
+ex:user3 a ex:User ;
+    ex:userName "alice_wonder" ;
+    ex:email "alice.wonder@email.com" ;
+    ex:firstName "Alice" ;
+    ex:lastName "Wonder" .
+
+# Additional orders
+ex:order2 a ex:Order ;
+    ex:containsProduct ex:product2 ;
+    ex:placedBy ex:user2 .
+
+ex:order3 a ex:Order ;
+    ex:containsProduct ex:product1, ex:product3 ;
+    ex:placedBy ex:user3 .
+
+ex:product4 ex:hasCategory ex:category1 .
+ex:product5 ex:hasCategory ex:category2 .
+ex:product6 ex:hasCategory ex:category3 .
+ex:product7 ex:hasCategory ex:category1 .

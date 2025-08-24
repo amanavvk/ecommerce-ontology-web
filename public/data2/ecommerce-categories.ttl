@@ -1,0 +1,22 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+
+ec:cat1 a ec:Category ; ec:categoryName "Electronics" .
+ec:cat2 a ec:Category ; ec:categoryName "Computers" ; ec:parentCategory ec:cat1 .
+ec:cat3 a ec:Category ; ec:categoryName "Smartphones" ; ec:parentCategory ec:cat1 .
+ec:cat4 a ec:Category ; ec:categoryName "Accessories" ; ec:parentCategory ec:cat1 .
+ec:cat5 a ec:Category ; ec:categoryName "Clothing" .
+ec:cat6 a ec:Category ; ec:categoryName "Shoes" ; ec:parentCategory ec:cat5 .
+ec:cat7 a ec:Category ; ec:categoryName "Home Appliances" .
+ec:cat8 a ec:Category ; ec:categoryName "Kitchen" ; ec:parentCategory ec:cat7 .
+ec:cat9 a ec:Category ; ec:categoryName "Books" .
+ec:cat10 a ec:Category ; ec:categoryName "Fiction" ; ec:parentCategory ec:cat9 .
+ec:cat11 a ec:Category ; ec:categoryName "Non-Fiction" ; ec:parentCategory ec:cat9 .
+ec:cat12 a ec:Category ; ec:categoryName "Sports" .
+ec:cat13 a ec:Category ; ec:categoryName "Fitness" ; ec:parentCategory ec:cat12 .
+ec:cat14 a ec:Category ; ec:categoryName "Toys" .
+ec:cat15 a ec:Category ; ec:categoryName "Board Games" ; ec:parentCategory ec:cat14 .
+ec:cat16 a ec:Category ; ec:categoryName "Beauty" .
+ec:cat17 a ec:Category ; ec:categoryName "Skincare" ; ec:parentCategory ec:cat16 .
+ec:cat18 a ec:Category ; ec:categoryName "Automotive" .
+ec:cat19 a ec:Category ; ec:categoryName "Car Accessories" ; ec:parentCategory ec:cat18 .
+ec:cat20 a ec:Category ; ec:categoryName "Garden" .

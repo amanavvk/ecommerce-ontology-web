@@ -1,0 +1,6 @@
+employeeId,firstName,lastName,department,role,startDate,salary,skillLevel,certifications
+E001,John,Smith,Production,Machine Operator,2020-03-15,55000,Senior,ISO 9001; Safety Level 2
+E002,Sarah,Johnson,Quality Control,Quality Inspector,2019-08-20,62000,Expert,Six Sigma Black Belt; ISO 14001
+E003,Mike,Williams,Maintenance,Maintenance Technician,2021-01-10,58000,Senior,Electrical; Hydraulics; PLC Programming
+E004,Lisa,Brown,Engineering,Process Engineer,2018-11-05,75000,Expert,Lean Manufacturing; AutoCAD; SolidWorks
+E005,David,Davis,Production,Line Supervisor,2017-06-12,68000,Expert,Leadership; Production Planning; Safety Management

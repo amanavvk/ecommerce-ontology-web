@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:ex="http://example.org/ecommerce#">
+
+    <owl:Ontology rdf:about="http://example.org/ecommerce#"/>
+
+    <owl:Class rdf:about="http://example.org/ecommerce#User"/>
+    <owl:Class rdf:about="http://example.org/ecommerce#Admin"/>
+    <owl:Class rdf:about="http://example.org/ecommerce#Customer"/>
+
+    <owl:ObjectProperty rdf:about="http://example.org/ecommerce#hasOrder"/>
+    <owl:ObjectProperty rdf:about="http://example.org/ecommerce#hasCart"/>
+    <owl:ObjectProperty rdf:about="http://example.org/ecommerce#hasPaymentMethod"/>
+
+    <owl:DatatypeProperty rdf:about="http://example.org/ecommerce#username"/>
+    <owl:DatatypeProperty rdf:about="http://example.org/ecommerce#email"/>
+    <owl:DatatypeProperty rdf:about="http://example.org/ecommerce#password"/>
+    <owl:DatatypeProperty rdf:about="http://example.org/ecommerce#registrationDate"/>
+
+</rdf:RDF>

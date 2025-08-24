@@ -1,0 +1,19 @@
+@prefix ec: <http://www.example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Orders
+
+ec:order1 a ec:Order ;
+    ec:orderDate "2025-08-01T10:00:00"^^xsd:dateTime ;
+    ec:placedBy ec:user1 ;
+    ec:containsProduct ec:prod1, ec:prod3 .
+
+ec:order2 a ec:Order ;
+    ec:orderDate "2025-08-02T15:30:00"^^xsd:dateTime ;
+    ec:placedBy ec:user2 ;
+    ec:containsProduct ec:prod2, ec:prod4 .
+
+ec:order3 a ec:Order ;
+    ec:orderDate "2025-08-03T09:45:00"^^xsd:dateTime ;
+    ec:placedBy ec:user3 ;
+    ec:containsProduct ec:prod5, ec:prod6 .

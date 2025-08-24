@@ -1,0 +1,148 @@
+# Manufacturing Data - Sample RDF Dataset Generated from R2RML Mapping
+# This represents the RDF output from the legacy manufacturing database integration
+
+@prefix mfg: <http://example.org/manufacturing#> .
+@prefix ex: <http://example.org/manufacturing/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Machines
+ex:machine/M001 a mfg:Machine ;
+    mfg:machineID "M001" ;
+    mfg:machineType "CNC Mill" ;
+    mfg:locationName "Production Floor A" ;
+    mfg:installDate "2020-01-15"^^xsd:date .
+
+ex:machine/M002 a mfg:Machine ;
+    mfg:machineID "M002" ;
+    mfg:machineType "Assembly Line" ;
+    mfg:locationName "Production Floor B" ;
+    mfg:installDate "2019-06-20"^^xsd:date .
+
+ex:machine/M003 a mfg:Machine ;
+    mfg:machineID "M003" ;
+    mfg:machineType "Quality Control Station" ;
+    mfg:locationName "QC Department" ;
+    mfg:installDate "2021-03-10"^^xsd:date .
+
+ex:machine/M004 a mfg:Machine ;
+    mfg:machineID "M004" ;
+    mfg:machineType "CNC Lathe" ;
+    mfg:locationName "Production Floor A" ;
+    mfg:installDate "2020-09-05"^^xsd:date .
+
+ex:machine/M005 a mfg:Machine ;
+    mfg:machineID "M005" ;
+    mfg:machineType "Assembly Line" ;
+    mfg:locationName "Production Floor C" ;
+    mfg:installDate "2018-11-12"^^xsd:date .
+
+# Production Runs
+ex:production/P001 a mfg:ProductionRun ;
+    mfg:productionID "P001" ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:timestamp "2024-01-15T08:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 150 ;
+    mfg:hasQualityMeasurement ex:quality/Q001 .
+
+ex:production/P002 a mfg:ProductionRun ;
+    mfg:productionID "P002" ;
+    mfg:producedBy ex:machine/M002 ;
+    mfg:timestamp "2024-01-15T09:30:00"^^xsd:dateTime ;
+    mfg:outputQuantity 200 ;
+    mfg:hasQualityMeasurement ex:quality/Q002 .
+
+ex:production/P003 a mfg:ProductionRun ;
+    mfg:productionID "P003" ;
+    mfg:producedBy ex:machine/M003 ;
+    mfg:timestamp "2024-01-15T11:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 75 ;
+    mfg:hasQualityMeasurement ex:quality/Q003 .
+
+ex:production/P004 a mfg:ProductionRun ;
+    mfg:productionID "P004" ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:timestamp "2024-01-15T14:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 180 ;
+    mfg:hasQualityMeasurement ex:quality/Q004 .
+
+ex:production/P005 a mfg:ProductionRun ;
+    mfg:productionID "P005" ;
+    mfg:producedBy ex:machine/M004 ;
+    mfg:timestamp "2024-01-16T08:30:00"^^xsd:dateTime ;
+    mfg:outputQuantity 120 ;
+    mfg:hasQualityMeasurement ex:quality/Q005 .
+
+ex:production/P006 a mfg:ProductionRun ;
+    mfg:productionID "P006" ;
+    mfg:producedBy ex:machine/M002 ;
+    mfg:timestamp "2024-01-16T10:15:00"^^xsd:dateTime ;
+    mfg:outputQuantity 220 ;
+    mfg:hasQualityMeasurement ex:quality/Q006 .
+
+ex:production/P007 a mfg:ProductionRun ;
+    mfg:productionID "P007" ;
+    mfg:producedBy ex:machine/M005 ;
+    mfg:timestamp "2024-01-16T13:45:00"^^xsd:dateTime ;
+    mfg:outputQuantity 190 ;
+    mfg:hasQualityMeasurement ex:quality/Q007 .
+
+ex:production/P008 a mfg:ProductionRun ;
+    mfg:productionID "P008" ;
+    mfg:producedBy ex:machine/M003 ;
+    mfg:timestamp "2024-01-17T09:00:00"^^xsd:dateTime ;
+    mfg:outputQuantity 85 ;
+    mfg:hasQualityMeasurement ex:quality/Q008 .
+
+ex:production/P009 a mfg:ProductionRun ;
+    mfg:productionID "P009" ;
+    mfg:producedBy ex:machine/M004 ;
+    mfg:timestamp "2024-01-17T11:30:00"^^xsd:dateTime ;
+    mfg:outputQuantity 165 ;
+    mfg:hasQualityMeasurement ex:quality/Q009 .
+
+ex:production/P010 a mfg:ProductionRun ;
+    mfg:productionID "P010" ;
+    mfg:producedBy ex:machine/M001 ;
+    mfg:timestamp "2024-01-17T15:20:00"^^xsd:dateTime ;
+    mfg:outputQuantity 175 ;
+    mfg:hasQualityMeasurement ex:quality/Q010 .
+
+# Quality Measurements
+ex:quality/Q001 a mfg:QualityMeasurement ;
+    mfg:qualityScore 96.5 .
+
+ex:quality/Q002 a mfg:QualityMeasurement ;
+    mfg:qualityScore 94.2 .
+
+ex:quality/Q003 a mfg:QualityMeasurement ;
+    mfg:qualityScore 98.7 .
+
+ex:quality/Q004 a mfg:QualityMeasurement ;
+    mfg:qualityScore 97.1 .
+
+ex:quality/Q005 a mfg:QualityMeasurement ;
+    mfg:qualityScore 95.8 .
+
+ex:quality/Q006 a mfg:QualityMeasurement ;
+    mfg:qualityScore 93.4 .
+
+ex:quality/Q007 a mfg:QualityMeasurement ;
+    mfg:qualityScore 96.9 .
+
+ex:quality/Q008 a mfg:QualityMeasurement ;
+    mfg:qualityScore 99.2 .
+
+ex:quality/Q009 a mfg:QualityMeasurement ;
+    mfg:qualityScore 97.6 .
+
+ex:quality/Q010 a mfg:QualityMeasurement ;
+    mfg:qualityScore 95.3 .
+
+# Machine-Production relationships (already defined above via mfg:producedBy)
+ex:machine/M001 mfg:hasProduction ex:production/P001, ex:production/P004, ex:production/P010 .
+ex:machine/M002 mfg:hasProduction ex:production/P002, ex:production/P006 .
+ex:machine/M003 mfg:hasProduction ex:production/P003, ex:production/P008 .
+ex:machine/M004 mfg:hasProduction ex:production/P005, ex:production/P009 .
+ex:machine/M005 mfg:hasProduction ex:production/P007 .

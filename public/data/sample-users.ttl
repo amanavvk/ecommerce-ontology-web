@@ -1,0 +1,20 @@
+@prefix ex: <http://example.org/ecommerce#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:User1 a ex:User ;
+    ex:username "john_doe" ;
+    ex:email "john.doe@example.com" ;
+    ex:fullName "John Doe" ;
+    ex:registrationDate "2023-01-15"^^xsd:date .
+
+ex:User2 a ex:User ;
+    ex:username "jane_smith" ;
+    ex:email "jane.smith@example.com" ;
+    ex:fullName "Jane Smith" ;
+    ex:registrationDate "2023-02-20"^^xsd:date .
+
+ex:User3 a ex:User ;
+    ex:username "alice_jones" ;
+    ex:email "alice.jones@example.com" ;
+    ex:fullName "Alice Jones" ;
+    ex:registrationDate "2023-03-05"^^xsd:date .

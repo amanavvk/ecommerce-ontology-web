@@ -1,0 +1,47 @@
+{
+  "name": "ecommerce-ontology-web",
+  "version": "1.0.0",
+  "description": "A web application for visualizing and interacting with an e-commerce ontology.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@comunica/query-sparql": "^4.3.0",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@types/n3": "^1.26.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "core-js": "^2.6.12",
+    "formidable": "^3.5.4",
+    "lucide-react": "^0.541.0",
+    "n3": "^1.26.0",
+    "next": "latest",
+    "rdflib": "^1.0.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "latest",
+    "vis-network": "^10.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.11",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "^5.9.2"
+  },
+  "keywords": [
+    "ontology",
+    "ecommerce",
+    "sparql",
+    "nextjs"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
